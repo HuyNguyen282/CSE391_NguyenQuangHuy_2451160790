@@ -114,20 +114,22 @@ _______________________________________________________________
 ```
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bài C</title>
 
 </head>
+
 <body>
     <!-- <header>: khu vực cố định đầu trang, thường chứa logo và navigation -->
     <header>
-        <a href = "/" aria-label = "trang chủ">
+        <a href="/" aria-label="trang chủ">
             <strong>My Shop</strong>
         </a>
         <!-- <nav>: khu vực điều hướng chính, tập hợp các link điều hướng chính của trang -->
-        <nav aria-label = "Điều hướng chính">
+        <nav aria-label="Điều hướng chính">
             <ul>
                 <li><a href="/dien-thoai">Điện thoại</a></li>
                 <li><a href="/laptop">Laptop</a></li>
@@ -139,100 +141,86 @@ _______________________________________________________________
     <main>
         <!-- <breadcrumb>: Khu vực điều hướng phụ -->
         <!-- aria-label: phân biệt với nav chính bên trên -->
-        <nav aria-label = "breadcrumb">
+        <nav aria-label="breadcrumb">
             <ol>
-                <li><a href = "/">Trang chủ</a></li>
-                <li><a href = "/dien-thoai">Điện thoại</a></li>
-                <li><a href = "/iphone">iPhone</a></li>
+                <li><a href="/">Trang chủ</a></li>
+                <li><a href="/dien-thoai">Điện thoại</a></li>
+                <li><a href="/iphone">iPhone</a></li>
             </ol>
         </nav>
         <!-- <article>: vì thông tin sản phẩm là độc lập, có thể tồn tại riêng lẻ -->
-        <article aria-label = "thông tin sản phẩm">
+        <article aria-label="thông tin sản phẩm">
             <!-- <section>: nhóm nội dung có chủ đề riêng (gallery ảnh) -->
             <section aria-label="Ảnh sản phẩm">
                 <!-- <figure>: nhóm một hình ảnh và chú thích của nó -->
                 <figure>
-                    <img src = "iphone16-1.jpg" alt = "Ảnh iPhone 16 - góc nhìn chính">
+                    <img src="https://placehold.co/200" alt="Ảnh iPhone 16 - góc nhìn chính">
                     <figcaption>iPhone 16 - Góc nhìn chính</figcaption>
                 </figure>
-                <ul aria-label = "ảnh thu nhỏ">
-                    <li>
-                    <figure>
-                        <img src="iphone-back.jpg" alt = "Ảnh iPhone 16 - mặt sau">
-                    </figure>
-                    </li>
-                    <li>
-                    <figure>
-                        <img src="iphone-side.jpg" alt = "Ảnh iPhone 16 - cạnh bên">
-                    </figure>
-                    </li>
-                    <li>
-                    <figure>
-                        <img src="iphone-screen.jpg" alt = "Ảnh iPhone 16 - màn hình">
-                    </figure>
-                    </li>
-                    <li>
-                    <figure>
-                        <img src="iphone-box.jpg" alt = "Ảnh iPhone 16 - hộp sản phẩm">
-                    </figure>
-                    </li>
-                </ul>
+                <table> <!-- <table>: nhóm các hình ảnh phụ của sản phẩm -->
+                    <tr>
+                        <td><img src="https://placehold.co/200"></td> <!-- <td>: nhóm một hình ảnh phụ -->
+                        <td><img src="https://placehold.co/200"></td> <!-- <td>: nhóm một hình ảnh phụ -->
+                        <td><img src="https://placehold.co/200"></td> <!-- <td>: nhóm một hình ảnh phụ -->
+                        <td><img src="https://placehold.co/200"></td> <!-- <td>: nhóm một hình ảnh phụ -->
+                    </tr>
+                </table>
             </section>
             <!-- <section>: nhóm nội dung thông tin chính của sản phẩm -->
             <section aria-label="Thông tin sản phẩm">
-            <!-- h1: tiêu đề chính của sản phẩm -->
+                <!-- h1: tiêu đề chính của sản phẩm -->
                 <h1>iPhone 16 Pro Max</h1>
                 <p>Giá: 30.000.000 VND</p>
                 <p>Đánh giá: 4.5/5 sao</p>
                 <p> iPhone 16 Pro Max với chip A18 Pro, camera 48MP thế hệ mới,
-                màn hình Super Retina XDR 6.9 inch, pin lên đến 33 giờ sử dụng.</p>
-                <button type="button">Thêm vào giỏ hàng</button>
-                <button type="button">Mua ngay</button>
+                    màn hình Super Retina XDR 6.9 inch, pin lên đến 33 giờ sử dụng.</p>
+                <button type="button">Thêm vào giỏ hàng</button> <!--<button>: nút thêm sản phẩm vào giỏ hàng -->
+                <button type="button">Mua ngay</button><!--<button>: nút mua sản phẩm -->
             </section>
 
             <!-- <section>: nhóm nội dung bảng thông số kỹ thuật -->
             <section aria-label="Thông số kỹ thuật">
-            <h2>Thông số kỹ thuật</h2>
-            <table>
-                <caption>Bảng thông số kỹ thuật của iPhone 16 Pro Max</caption>
-                <thead>
-                    <tr>
-                        <th>Thông số</th>
-                        <th>Chi tiết</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Chip</th>
-                        <td>A18 Pro</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Màn hình</th>
-                        <td>6.9 inch, Super Retina XDR</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Camera</th>
-                        <td>48MP, 3 camera sau</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Pin</th>
-                        <td>33 giờ sử dụng</td>
+                <h2>Thông số kỹ thuật</h2>
+                <table>
+                    <caption>Bảng thông số kỹ thuật của iPhone 16 Pro Max</caption>
+                    <thead>
+                        <tr>
+                            <th>Thông số</th>
+                            <th>Chi tiết</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Chip</th>
+                            <td>A18 Pro</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Màn hình</th>
+                            <td>6.9 inch, Super Retina XDR</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Camera</th>
+                            <td>48MP, 3 camera sau</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Pin</th>
+                            <td>33 giờ sử dụng</td>
 
-                    </tr>
-                    <tr>
-                        <th scope="row">Bộ nhớ</th>
-                        <td>256GB, 512GB, 1TB</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Màu sắc</th>
-                        <td>Đen, Trắng, Xanh, Vàng</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Hệ điều hành</th>
-                        <td>iOS 18</td>
-                    </tr>
-                </tbody>
-            </table>
+                        </tr>
+                        <tr>
+                            <th scope="row">Bộ nhớ</th>
+                            <td>256GB, 512GB, 1TB</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Màu sắc</th>
+                            <td>Đen, Trắng, Xanh, Vàng</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Hệ điều hành</th>
+                            <td>iOS 18</td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
             <!-- <section>: nhóm nội dung đánh giá của khách hàng -->
             <section aria-label="Đánh giá của khách hàng">
@@ -244,7 +232,8 @@ _______________________________________________________________
                         <p>Đánh giá bởi: Nguyễn Văn A</p>
                     </header>
                     <p>
-                        Tôi đã sử dụng iPhone 16 Pro Max được một tuần và hoàn toàn hài lòng với hiệu năng và chất lượng camera
+                        Tôi đã sử dụng iPhone 16 Pro Max được một tuần và hoàn toàn hài lòng với hiệu năng và chất lượng
+                        camera
                     </p>
                 </article>
             </section>
@@ -274,9 +263,10 @@ _______________________________________________________________
                 <li><a href="/chinh-sach-doi-tra">Chính sách đổi trả</a></li>
             </ul>
         </nav>
-        <p>&copy; 2023 Apple Inc. All rights reserved.</p>
+        <p>&copy; 2026. All rights reserved.</p>
     </footer>
 </body>
+
 </html>
 ```
 ### Câu C2:
