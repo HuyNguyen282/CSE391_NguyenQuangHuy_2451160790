@@ -84,13 +84,15 @@ Giải thích:
     - Lỗi 12: Dòng 45 - thẻ `<p>` chưa được đóng - Sửa thêm `</p>`
 ### Câu B4
 >
-- 1 chụp screenshot tab Elements trang Thegioididong.com:
+#### 1 chụp screenshot tab Elements trang Thegioididong.com:
+-   3 thẻ semantic HTML5 trang đang sử dụng:
     - Thẻ `<header>`: dùng ở khu vực đầu trang và chứa navigation
     ![alt text](/PBT_01/screenshot/image-3.png)
     - Thẻ `<section>`: dùng section cho trang nội dung chính của trang chi tiết sản phẩm 
     ![alt text](/PBT_01/screenshot/image-4.png)
     - Thẻ `<footer>`: dùng ở vùng chứa link, copyright, địa chỉ,vv...
    ![alt text](/PBT_01/screenshot/image-2.png)
+- 2 thẻ trang chưa dùng đúng chuẩn semantic
     - `<ul class="breadcrumb">`nên là `<ol>` vì breadcrumb có thứ tự, dùng `<ul>` là mất đi ý nghĩa thứ tự đó
     ![alt text](/PBT_01/screenshot/image-5.png)
     - `<img class="img-location" src="https://cdnv2.tgdd.vn/mwg-static/common/sample/bro638962249653176064.png">` không có alt, screenreader không đọc được
@@ -105,7 +107,7 @@ Giải thích:
     - Input types được dùng là:
         - `type="text"` : ô nhập tìm kiếm 
         - `type="submit"`: nút submit dưới dạng button dùng để gửi form
-    ![alt text](/PBT_01/screenshot/image-8.png)
+![alt text](/PBT_01/screenshot/image-8.png)
 _______________________________________________________________
 ## Phần C 
 ### Câu C1
@@ -278,5 +280,10 @@ _______________________________________________________________
 </html>
 ```
 ### Câu C2:
+   Quan điểm dùng `<div>` cho mọi thứ rồi thêm class là quan điểm thiếu tầm nhìn kĩ thuật. 
+-   Bởi vì lý do đầu tiên do SEO, Google không đọc được các class của web nhưng lại đọc được các thẻ semantic. Khi thấy `<h1>`, trang sẽ biết đấy là tiêu đề, quan trọng nhất trang. Khi thấy thẻ `<article>`, trang sẽ biết được đây là nội dung chính cần index. Khi một trang toàn những thẻ `<div>`. Bot sẽ phải đoán mò từng thẻ, làm SEO được đánh giá thấp.Hơn nữa, thẻ semantic HTML cho phép Google hiển thị rich snippets trực tiếp trên trang kết quả.
+-   Lý do thứ 2 là về Accessibility, người mắc các khuyết tật về mắt thường dùng screen reader để học tập và làm việc. Họ điều hướng bằng phím tắt: R để nhảy đến phím nav, M để đến main,....Nếu một trang toàn div, screen reader chỉ có thể đọc từ đầu đến cuối mà không có điểm dùng, không có cấu trúc.
+-   Ví dụ cụ thể: Một trang web, nếu một bài post được đặt trong thẻ `<article>` và tiêu đề dùng thẻ `<h1>`, công cụ tìm kiếm và screen reader sẽ đều nhận diện được đây là nội dung chính. Ngược lại, nếu đặt trong thẻ `<div class = "post">`, chúng ta phải phụ thuộc và CSS và JS tuy nhiên screen reader sẽ không hiểu được ý nghĩa đó.
+-   Trường hợp thẻ `<div>` vẫn phù hợp: Thẻ `<div>` vẫn là công cụ hữu ích khi cần một wrapper thuần CSS, tức khi cần một container chỉ để áp dụng các layout mà không có ý nghĩa ngữ nghĩa nào.
 
 
