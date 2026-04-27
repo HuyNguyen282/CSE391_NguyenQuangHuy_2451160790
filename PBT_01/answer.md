@@ -13,7 +13,7 @@
 
 - Ý 2    
     Tab network cho thông tin của tất cả các HTTP request của trang    
-    ![alt text](image.png)
+    ![alt text](/PBT_01/screenshot/image.png)`
 
 
 ### Câu A2 
