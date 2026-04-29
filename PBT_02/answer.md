@@ -209,3 +209,6 @@ ______________________________________________________________________
 - Giả mạo các request hoặc bypass qua các logic giao dịch: Hacker gửi số tiền âm, số lượng sản phẩm vượt quá lần quy định. dữ liệu sai vẫn được lưu vào database, gây thiệt hại cho ngân hàng
 
 ---
+
+## Phần D
+<https://drive.google.com/file/d/18OWjE78dPZZfocVqlJFGwf__63nj_LIg/view?usp=sharing>

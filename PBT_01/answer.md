@@ -1,41 +1,48 @@
-# Bài tập 
-## Phần A: Đọc hiểu 
-### Câu A1 
+# Bài tập
+
+## Phần A: Đọc hiểu
+
+### Câu A1
+>
 > tài liệu tham chiếu: `tuan_1_html5/01_introduction_html_universe.md`
-- Khi gõ https://shopee.vn vào trình duyệt, thứ tự các bước xảy ra như sau:    
-    Bước 1:  DNS lookup    
-    Bước 2:  TCP handshake    
+
+- Khi gõ <https://shopee.vn> vào trình duyệt, thứ tự các bước xảy ra như sau:
+    Bước 1:  DNS lookup
+    Bước 2:  TCP handshake
     Bước 3:  TLS handshake  
     Bước 4: HTTP request gửi đi  
-    Bước 5: Server trả Response   
+    Bước 5: Server trả Response
     Bước 6: Parse HTML -> DOM/CSSOM  
     Bước 7: Render layout  
 
-- Ý 2    
-    Tab network cho thông tin của tất cả các HTTP request của trang    
+- Ý 2
+    Tab network cho thông tin của tất cả các HTTP request của trang
     ![alt text](/PBT_01/screenshot/image.png)`
 
-
-### Câu A2 
+### Câu A2
+>
 > Tài liệu tham chiếu: `tuan_1_html5/04_semantic_html.md`
 
-#### Trang web bị Google đánh giá SEO thấp bởi vì không dùng các thẻ Semantic, khiến cho bot khó hiểu được cấu trúc và nội dung trang. 
-##### Các lỗi trong source và sửa lại: 
+#### Trang web bị Google đánh giá SEO thấp bởi vì không dùng các thẻ Semantic, khiến cho bot khó hiểu được cấu trúc và nội dung trang
+
+##### Các lỗi trong source và sửa lại
 
 **Lỗi 1:** `<div class ="header">` (thẻ này làm cho Google không nhận ra đây là header của trang)
-**Fix lỗi 1:** Dùng thẻ `<header>` 
+**Fix lỗi 1:** Dùng thẻ `<header>`
 
 **Lỗi 2:** `<div class ="logo">ShopTLU</div>` (thẻ không cung cấp phần heading, làm mất cấu trúc nội dung )
 **Fix lỗi 2:** Dùng `<h1>ShopTLU</h1>`
 
-**Lỗi 3:** `<div class = "menu">` + `<div>` bọc thẻ các link. Đây không phải navigation, screen reader sẽ không đọc được 
+**Lỗi 3:** `<div class = "menu">` + `<div>` bọc thẻ các link. Đây không phải navigation, screen reader sẽ không đọc được
 **Fix lỗi 3:** Dùng `<nav><ul><li><a>...</nav></ul></li></a>`
 
 **Lỗi 4:** `<div class = "main">` lỗi này làm cho trang không xác định được nội dung chính
 **Fix lỗi 4:** Dùng thẻ `<main>`
 
 ### Câu A3
+>
 > Tài liệu tham chiếu:
+
 ```txt
 ┌─────────────────────┐
 │ Hộp 1               │ + <div> : block , full width
@@ -50,67 +57,81 @@ Text C Text D           + <span><strong> : cùng dòng, text D kiểu chữ Bold
 └─────────────────────┘
 
 ```
-Giải thích: 
+
+Giải thích:
+
 - `<div>`: là một thẻ block element, luôn bắt đầu trên một dòng mới và chiếm toàn bộ chiều rộng có sẵn, các phần tử khác không thể nằm trên cùng dòng. Khi thẻ này xuất hiện sau các inline element như span, strong,... thì nó vẫn tự động xuống dòng bởi vì tính chất của thẻ.
 - `<span>`: là inline element, chỉ chiếm đúng phần nội dung text, nằm cạnh nhau trên cùng dòng và không tạo ra line break.
 - `<strong>`: tương tự thẻ span nhưng cho text kiểu chữ Bold.
 
 ### Câu A4
+>
 > Tài liệu tham chiếu : `tuan_1_html5/05_tables_hyperlinks.md`
+
 - Thẻ `<thead>` : Phần đầu bảng - chứa hàng tiêu đề cột , giúp xác định ý nghĩa trên từng cột.
 - Thẻ `<tbody>` : Phần thân bảng - chứa dữ liệu chính, có thể có nhiều thẻ `<tbody>` trong 1 table.
 - Thẻ `<tfoot>` : Phần cuối bảng - tổng kết, ghi chú và thống kê, dùng khi có tổng cộng, tóm tắt, ghi chú.
 
-+ Không nên dùng <table> để tạo layout trang web vì: 
+- Không nên dùng <table> để tạo layout trang web vì:
+
 - Khả năng phản hồi kém: vì các bố cục dựa trên bảng cứng nhắc, các ô tự động mở rộng để phù hợp với nội dung và luồng hiển thị không linh hoạt, khiến các thiết kế trở nên khó khăn hơn khi dùng CSS
-- Bảo trì kém: Bảng thường yêu cầu nhiều phần tử lồng nhau, làm cho source HTML cồng kềnh, khó hiểu, dễ xảy ra lỗi. Khi thêm hay bỏ bớt cột thì cấu trúc bảng sẽ bị vỡ, làm cho trang web phải load lại toàn bộ bảng thì mới đọc được. 
+- Bảo trì kém: Bảng thường yêu cầu nhiều phần tử lồng nhau, làm cho source HTML cồng kềnh, khó hiểu, dễ xảy ra lỗi. Khi thêm hay bỏ bớt cột thì cấu trúc bảng sẽ bị vỡ, làm cho trang web phải load lại toàn bộ bảng thì mới đọc được.
 - SEO & Accessibility kém: Screen reader đọc theo thứ tự hàng -> cột -> hàng tiếp theo. Dùng table cho layout nội dung sẽ bị đọc theo thứ tự sai logic.
+
 ------------------------------------------------------
-## Phần B 
+
+## Phần B
+
 ### Câu B3
 >
-- Các lỗi trong source code :    
-    - Lỗi 1: Dòng 1 - `<!DOCTYPE>` thiếu html - Sửa lỗi: `<!DOCTYPE html>`
-    - Lỗi 2: Dòng 2 - `<html>` thiếu lang attribute - Sửa lỗi : `<html lang="vi">`
-    - Lỗi 3: Dòng 4 - `<title>` không đóng thẻ - Sửa lỗi :thêm `</title>`
-    - Lỗi 4: Dòng 5 - `<charset = "utf8">` làm giá trị thẻ sai - Sửa lỗi: sửa thành `charset = "UTF-8"`
-    - Lỗi 5: Dòng 8 - `<h1>.....<h1>` thẻ đóng sai  - Sửa lỗi : sửa thành `</h1>` 
-    - Lỗi 6: Dòng 11 - `href="home"` thiếu dấu / -> Sửa thành `<href="/home">`
-    - Lỗi 7: Dòng 11 - `<a>...<a>` sai thẻ đóng -> Sửa thành `</a>` 
-    - Lỗi 8: Dòng 20 - `<img src = iphone.jpg>` src không có dấu nháy và thiếu alt - Sửa `src = "iphone.jpg" alt = "..."`
-    - Lỗi 9: Dòng 22 - `<p>Giá: <b>25.990.000đ</p></b>` thẻ lồng sai kí tự -> Sửa thành `<p>Giá : <b> 25.990.000đ</b> </p>`
-    - Lỗi 10: Dòng 27 - Table thiếu `<thead>`, hàng đầu nên là header - Sửa thêm `<thead><th>`
-    - Lỗi 11: Dòng 40 - main thứ 2, html chỉ nhận 1 main visible - Sửa đổi thành aside
-    - Lỗi 12: Dòng 45 - thẻ `<p>` chưa được đóng - Sửa thêm `</p>`
+- Các lỗi trong source code :
+  - Lỗi 1: Dòng 1 - `<!DOCTYPE>` thiếu html - Sửa lỗi: `<!DOCTYPE html>`
+  - Lỗi 2: Dòng 2 - `<html>` thiếu lang attribute - Sửa lỗi : `<html lang="vi">`
+  - Lỗi 3: Dòng 4 - `<title>` không đóng thẻ - Sửa lỗi :thêm `</title>`
+  - Lỗi 4: Dòng 5 - `<charset = "utf8">` làm giá trị thẻ sai - Sửa lỗi: sửa thành `charset = "UTF-8"`
+  - Lỗi 5: Dòng 8 - `<h1>.....<h1>` thẻ đóng sai  - Sửa lỗi : sửa thành `</h1>`
+  - Lỗi 6: Dòng 11 - `href="home"` thiếu dấu / -> Sửa thành `<href="/home">`
+  - Lỗi 7: Dòng 11 - `<a>...<a>` sai thẻ đóng -> Sửa thành `</a>`
+  - Lỗi 8: Dòng 20 - `<img src = iphone.jpg>` src không có dấu nháy và thiếu alt - Sửa `src = "iphone.jpg" alt = "..."`
+  - Lỗi 9: Dòng 22 - `<p>Giá: <b>25.990.000đ</p></b>` thẻ lồng sai kí tự -> Sửa thành `<p>Giá : <b> 25.990.000đ</b> </p>`
+  - Lỗi 10: Dòng 27 - Table thiếu `<thead>`, hàng đầu nên là header - Sửa thêm `<thead><th>`
+  - Lỗi 11: Dòng 40 - main thứ 2, html chỉ nhận 1 main visible - Sửa đổi thành aside
+  - Lỗi 12: Dòng 45 - thẻ `<p>` chưa được đóng - Sửa thêm `</p>`
+
 ### Câu B4
 >
-#### 1 chụp screenshot tab Elements trang Thegioididong.com:
--   3 thẻ semantic HTML5 trang đang sử dụng:
-    - Thẻ `<header>`: dùng ở khu vực đầu trang và chứa navigation
+#### 1 chụp screenshot tab Elements trang Thegioididong.com
+
+- 3 thẻ semantic HTML5 trang đang sử dụng:
+  - Thẻ `<header>`: dùng ở khu vực đầu trang và chứa navigation
     ![alt text](/PBT_01/screenshot/image-3.png)
-    - Thẻ `<section>`: dùng section cho trang nội dung chính của trang chi tiết sản phẩm 
+  - Thẻ `<section>`: dùng section cho trang nội dung chính của trang chi tiết sản phẩm
     ![alt text](/PBT_01/screenshot/image-4.png)
-    - Thẻ `<footer>`: dùng ở vùng chứa link, copyright, địa chỉ,vv...
+  - Thẻ `<footer>`: dùng ở vùng chứa link, copyright, địa chỉ,vv...
    ![alt text](/PBT_01/screenshot/image-2.png)
 - 2 thẻ trang chưa dùng đúng chuẩn semantic
-    - `<ul class="breadcrumb">`nên là `<ol>` vì breadcrumb có thứ tự, dùng `<ul>` là mất đi ý nghĩa thứ tự đó
+  - `<ul class="breadcrumb">`nên là `<ol>` vì breadcrumb có thứ tự, dùng `<ul>` là mất đi ý nghĩa thứ tự đó
     ![alt text](/PBT_01/screenshot/image-5.png)
-    - `<img class="img-location" src="https://cdnv2.tgdd.vn/mwg-static/common/sample/bro638962249653176064.png">` không có alt, screenreader không đọc được
+  - `<img class="img-location" src="https://cdnv2.tgdd.vn/mwg-static/common/sample/bro638962249653176064.png">` không có alt, screenreader không đọc được
     ![alt text](/PBT_01/screenshot/image-6.png)
 - Bảng hiện thị nội dung so sánh iPhone 16e qua từng phiên bản
-    - Bảng có `<tbody>`
-    - Bảng không có `<thead>`
+  - Bảng có `<tbody>`
+  - Bảng không có `<thead>`
     ![alt text](/PBT_01/screenshot/image-7.png)
 -Form:
-    - Form có action là `/tim-kiem` gửi dữ liệu về trang tìm kiếm 
-    - Method không được khai báo.
-    - Input types được dùng là:
-        - `type="text"` : ô nhập tìm kiếm 
-        - `type="submit"`: nút submit dưới dạng button dùng để gửi form
+  - Form có action là `/tim-kiem` gửi dữ liệu về trang tìm kiếm
+  - Method không được khai báo.
+  - Input types được dùng là:
+    - `type="text"` : ô nhập tìm kiếm
+    - `type="submit"`: nút submit dưới dạng button dùng để gửi form
 ![alt text](/PBT_01/screenshot/image-8.png)
+
 _______________________________________________________________
-## Phần C 
+
+## Phần C
+
 ### Câu C1
+
 ```
 <!DOCTYPE html>
 <html lang="vi">
@@ -269,14 +290,18 @@ _______________________________________________________________
 
 </html>
 ```
-### Câu C2:
-   Quan điểm dùng `<div>` cho mọi thứ rồi thêm class là quan điểm thiếu tầm nhìn kĩ thuật. 
--   Bởi vì lý do đầu tiên do SEO, Google không đọc được các class của web nhưng lại đọc được các thẻ semantic. Khi thấy `<h1>`, trang sẽ biết đấy là tiêu đề, quan trọng nhất trang. Khi thấy thẻ `<article>`, trang sẽ biết được đây là nội dung chính cần index. Khi một trang toàn những thẻ `<div>`. Bot sẽ phải đoán mò từng thẻ, làm SEO được đánh giá thấp.Hơn nữa, thẻ semantic HTML cho phép Google hiển thị rich snippets trực tiếp trên trang kết quả.
--   Lý do thứ 2 là về Accessibility, người mắc các khuyết tật về mắt thường dùng screen reader để học tập và làm việc. Họ điều hướng bằng phím tắt: R để nhảy đến phím nav, M để đến main,....Nếu một trang toàn div, screen reader chỉ có thể đọc từ đầu đến cuối mà không có điểm dùng, không có cấu trúc.
--   Ví dụ cụ thể: Một trang web, nếu một bài post được đặt trong thẻ `<article>` và tiêu đề dùng thẻ `<h1>`, công cụ tìm kiếm và screen reader sẽ đều nhận diện được đây là nội dung chính. Ngược lại, nếu đặt trong thẻ `<div class = "post">`, chúng ta phải phụ thuộc và CSS và JS tuy nhiên screen reader sẽ không hiểu được ý nghĩa đó.
--   Trường hợp thẻ `<div>` vẫn phù hợp: Thẻ `<div>` vẫn là công cụ hữu ích khi cần một wrapper thuần CSS, tức khi cần một container chỉ để áp dụng các layout mà không có ý nghĩa ngữ nghĩa nào.
 
+### Câu C2
+
+   Quan điểm dùng `<div>` cho mọi thứ rồi thêm class là quan điểm thiếu tầm nhìn kĩ thuật.
+
+- Bởi vì lý do đầu tiên do SEO, Google không đọc được các class của web nhưng lại đọc được các thẻ semantic. Khi thấy `<h1>`, trang sẽ biết đấy là tiêu đề, quan trọng nhất trang. Khi thấy thẻ `<article>`, trang sẽ biết được đây là nội dung chính cần index. Khi một trang toàn những thẻ `<div>`. Bot sẽ phải đoán mò từng thẻ, làm SEO được đánh giá thấp.Hơn nữa, thẻ semantic HTML cho phép Google hiển thị rich snippets trực tiếp trên trang kết quả.
+- Lý do thứ 2 là về Accessibility, người mắc các khuyết tật về mắt thường dùng screen reader để học tập và làm việc. Họ điều hướng bằng phím tắt: R để nhảy đến phím nav, M để đến main,....Nếu một trang toàn div, screen reader chỉ có thể đọc từ đầu đến cuối mà không có điểm dùng, không có cấu trúc.
+- Ví dụ cụ thể: Một trang web, nếu một bài post được đặt trong thẻ `<article>` và tiêu đề dùng thẻ `<h1>`, công cụ tìm kiếm và screen reader sẽ đều nhận diện được đây là nội dung chính. Ngược lại, nếu đặt trong thẻ `<div class = "post">`, chúng ta phải phụ thuộc và CSS và JS tuy nhiên screen reader sẽ không hiểu được ý nghĩa đó.
+- Trường hợp thẻ `<div>` vẫn phù hợp: Thẻ `<div>` vẫn là công cụ hữu ích khi cần một wrapper thuần CSS, tức khi cần một container chỉ để áp dụng các layout mà không có ý nghĩa ngữ nghĩa nào.
 
 ___________________________________________________________________________________________
+
 ## Phần D
-Link video: https://drive.google.com/file/d/1seoyLWi-5VRMajs7JesMWXofVeB97lGV/view?usp=sharing
+
+Link video: <https://drive.google.com/file/d/1seoyLWi-5VRMajs7JesMWXofVeB97lGV/view?usp=sharing>
