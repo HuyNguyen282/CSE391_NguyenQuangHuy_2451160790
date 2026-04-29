@@ -88,3 +88,124 @@ _______________________________________________________________
 ### Câu B1
 
     HTML không thể validate confrim password bởi vì HTML5 constraint validation không cung cấp cơ chế so sánh giữa hai input khác nhau, thuộc tính pattern chỉ kiểm tra giá trị của chính input đó với một biểu thức cố định, không có quyền để động đến giá trị của input khác.
+______________________________________________________________________
+
+## Phần C : Suy luận
+
+### Câu C1
+
+**Lỗi 1:** Dòng 1 - `<form>` không có `action` và `method` — vi phạm best practices, form không biết gửi dữ liệu đi đâu bằng phương thức gì
+**Sửa lỗi 1**
+`<form action="#" method="POST">`
+
+**Lỗi 2**:Dòng 2 - Input "tên" nhưng không có `<label>` liên kết - vi phạm accessibility
+**Sửa lỗi 2:**
+
+```
+<label for = "name">Tên:</label> 
+<input type = "text" id = "name" name="name" required>
+```
+
+**Lỗi 3:** Dòng 4 - input email không có `<label>` liên kết - vi phạm accessibility
+**Sửa lỗi 3:**
+
+```
+<label for = "email">Email:</label> 
+<input type = "email" id = "email" name = "email" required placeholder="Email của bạn>
+```
+
+**Lỗi 4:** Dòng 6 - input password không có `<label>` liên kết - vi phạm accessibility
+**Sửa lỗi 4:**
+
+```
+<label for = "pass">Mật khẩu:</label> 
+<input type="password" id = "pass" name = "pass" required placeholder="Mật khẩu">
+```
+
+**Lỗi 5:** Dòng 7 - input nhập lại mật khẩu không có `<label>` liên kết - vi phạm accessibility
+**Sửa lỗi 5:**
+
+```
+<label for = "confrim_pass">Nhập lại mật khẩu</label> 
+<input type = "password" id = "confirm_pass" name="confirm_pass" required placeholder="Nhập lại mật khẩu">
+```
+
+**Lỗi 6:** Dòng 9 - input Phone dùng `type="text"` thay vì `type="tel"` và không có `<label>` — sai semantic và accessibility  
+**Sửa lỗi 6:**
+
+```
+<label for="phone">Số điện thoại:</label> 
+<input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="0901234567">
+```
+
+**Lỗi 7:** Dòng 11 - `<select>` không có `<label>` liên kết và không có `name`/`id` — vi phạm accessibility và form không gửi được dữ liệu  
+**Sửa lỗi 7:**
+
+```
+<label for="city">Thành phố:</label> 
+<select id="city" name="city"> 
+    <option value="">Chọn thành phố </option> 
+    <option value="hn">Hà Nội</option> 
+    <option value="hcm">TP.HCM</option> 
+</select>
+```
+
+**Lỗi 8:** Dòng 16 - `<label>Tôi đồng ý điều khoản</label>` không liên kết với checkbox nào (không có input checkbox) — thiếu input
+**Sửa lỗi 8**
+
+```
+<label><input type="checkbox" name="agree" required> Tôi đồng ý điều khoản</label>
+```
+
+### Câu C2
+
+**1. Pattern regex cho CMND/CCCD và Số tài khoản:**
+
+```
+<label for = "cccd">CMND/CCCD:</label><br>
+<input type="text" 
+       id="cccd" 
+       name="cccd" 
+       pattern="[0-9]{12}" 
+       maxlength="12"
+       required
+       title="CCCD phải gồm đúng 12 chữ số">
+<label for = "stk">Số tài khoản:</label><br>
+<input type="text" 
+       id="account" 
+       name="account" 
+       pattern="[0-9]{10,15}" 
+       required
+       title="Số tài khoản gồm 10 đến 15 chữ số">
+
+<label for = "email">Email:</label><br>
+<input type = "email"
+       id = "email"
+       name = "email"
+       required>
+<label for = "pin>Mã PIN:</label><br>
+<input type = "password"
+       id = "PIN"
+       name = "PIN"
+       required>
+```
+
+**2. HTML5 validation đủ an toàn cho ứng dụng ngân hàng chưa?**
+
+- Chưa đủ an toàn. Bởi vì HTML5 chỉ hỗ trợ kiểm tra dữ liệu phí frontend, toàn bộ code đều chạy trên máy người dùng. Hacker có thể:
+  - Sử dụng DevTools chỉnh sửa HTML, sửa các required, pattern,...
+  - Gửi request trực tiếp bằng Postman hoặc script tự động, bỏ qua browser
+  - Bỏ qua mọi validation trong trình duyệt
+
+**3. 3 loại validation mà HTML5 KHÔNG THỂ làm, phải dùng JavaScript:**
+
+- **So sánh 2 trường dữ liệu:** Ví dụ kiểm tra "Mật khẩu" và "Xác nhận mật khẩu" có giống nhau không — HTML5 không thể so sánh giá trị giữa các input
+- **Validate theo thời gian thực:** Kiểm tra username đã tồn tại chưa bằng cách gọi API server — HTML5 không có khả năng async request
+- **Validate logic phức tạp:** Ví dụ "Nếu chọn thanh toán thẻ thì bắt buộc nhập số thẻ, nếu chọn COD thì không cần" — logic conditional validation phụ thuộc vào state của form
+
+**4. 2 rủi ro bảo mật nếu chỉ validate Frontend, không validate Backend:**
+
+- SQL Injection: Kẻ tấn công bỏ qua frontend validation, gửi dữ liệu độc hại trực tiếp tới server
+- Giả mạo các request hoặc bypass qua các logic giao dịch: Hacker gửi số tiền âm, số lượng sản phẩm vượt quá lần quy định. dữ liệu sai vẫn được lưu vào database, gây thiệt hại cho ngân hàng
+
+---
