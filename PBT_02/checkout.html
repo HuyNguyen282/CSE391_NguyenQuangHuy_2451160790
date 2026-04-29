@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+
+</head>
+
+<body>
+    <header>
+        <h1>Form đặt hàng hoàn chỉnh</h1>
+        <nav>
+            <a href="#">Trang chủ</a>
+            <a href="#">Giỏ hàng</a>
+            <a href="#">Thanh toán</a>
+        </nav>
+    </header>
+    <main>
+        <form action="#" method="POST">
+            <section>
+                <h2>1.Giỏ hàng</h2>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Giá</th>
+                            <th>Tổng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Porche</td>
+                            <td>1</td>
+                            <td>10000000</td>
+                            <td>10000000</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>BMW</td>
+                            <td>1</td>
+                            <td>8000000</td>
+                            <td>8000000</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Audi</td>
+                            <td>1</td>
+                            <td>12000000</td>
+                            <td>12000000</td>
+                        </tr>
+
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan=4><strong>Tổng cộng:</strong></td>
+                            <td><strong>30000000</strong></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+            <br>
+
+            <section>
+                <h2>2.Phương thức thanh toán</h2>
+                <fieldset>
+                    <legend>Chọn phương thức thanh toán</legend>
+                    <label>
+                        <input type="radio" name="payment" value="cod" required> Thanh toán khi nhận hàng
+                    </label>
+                    <br>
+                    <label>
+                        <input type="radio" name="payment" value="credit_card"> Thanh toán bằng thẻ tín dụng
+                    </label>
+                    <br>
+                    <label>
+                        <input type="radio" name="payment" value="ewallet"> Thanh toán qua ví điện tử
+                    </label>
+                </fieldset>
+                <br>
+                <label for="coupon">Mã giảm giá:</label>
+                <input type="text" id="coupon" name="coupon" pattern="SALE[0-9]{4}" placeholder="SALE2026"
+                    title="Mã giảm giá: SALE + 4 chữ số, ví dụ SALE2026">
+                <br><br>
+                <label for="note">Ghi chú:</label>
+                <br>
+                <textarea id="note" name="note" rows="3" cols="40" placeholder="Ghi chú cho đơn hàng"></textarea>
+                <br><br>
+                <label for="search-product">Tìm kiếm sản phẩm</label>
+                <input type="text" id="search-product" name="search-product" list="products_suggestions"
+                    placeholder="Nhập tên sản phẩm để tìm kiếm">
+                <datalist id="products_suggestions">
+                    <option value="Porche">
+                    <option value="BMW">
+                    <option value="Audi">
+                    <option value="Mercedes">
+                    <option value="Lamborghini">
+                </datalist>
+            </section>
+            <br>
+            <section>
+                <h2>3.Thông tin giao hàng</h2>
+                <label for="ship_name">Tên người nhận</label>
+                <input type="text" id="ship_name" name="ship_name" required>
+                <br><br>
+                <label for="ship_address">Địa chỉ giao hàng</label>
+                <input type="text" id="ship_address" name="ship_address" required>
+                <br><br>
+                <label for="ship_phone">Số điện thoại</label>
+                <input type="tel" id="ship_phone" name="ship_phone" pattern="[0-9]{10}" placeholder="0123456789" required>
+                <br><br>
+                <label for="ship_date">Ngày giao hàng</label>
+                <input type="date" id="ship_date" name="ship_date" required min="2026-04-30">
+                <br><br>
+                <label for="ship_time">Giờ giao hàng</label>
+                <select id="ship_time" name="ship_time" required>
+                    <option value="">Chọn giờ giao hàng</option>
+                    <option value="morning">Sáng (8:00 - 12:00)</option>
+                    <option value="afternoon">Chiều (12:00 - 18:00)</option>
+                    <option value="evening">Tối (18:00 - 22:00)</option>
+                </select>
+                <br><br>
+                <label for="ship_days">Thời gian giao hàng(1-7 ngày)</label><br>
+                <input type="range" id="ship_days" name="ship_days" min="1" max="7" step="1" value="3">
+            </section>
+            <br>
+            <section>
+                <h2>4. Xác nhận đơn hàng</h2>
+                <p>Tiền hàng:30000000 VND</p>
+                <p>Phí vận chuyển: 500000 VND</p>
+                <p>Tổng tiền: <output id = "tongtien" for ="coupon ship_days">30500000</output> VND</p>
+
+                <br>
+                <p>Điểm tích luỹ: 572/10000 điểm</p>
+                <meter value = "572" min = "0" max = "10000">5.72%</meter>
+                <br><br>
+                <button type = "submit" aria-label="Xác nhận đơn hàng và thanh toán"> Xác nhận đơn hàng và thanh toán </button>
+            </section>
+        </form>
+        
+    </main>
+    <footer>
+        <p>&copy; 2026. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
