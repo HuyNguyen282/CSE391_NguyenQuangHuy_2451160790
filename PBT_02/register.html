@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <div class = "page-wrapper">
+        <h1>Register</h1>
+        <form action="#" method="POST">
+        <fieldset>
+            <legend>Thông tin cá nhân</legend>
+            <div class = "form-grid">
+                <div class = "form-group">
+                    <label for = "fullname">Họ và tên</label>
+                    <input type = "text" id = "fullname" name = "fullname"
+                    required minlength = "2" maxlength = "50" placeholder="Nguyễn Văn A">
+                    <label for = "email">Email</label>
+                    <input type = "email" id = "email" name = "email" required placeholder="abc@email.com">
+                    <label for = "tel">Số điện thoại</label>
+                    <input type = "tel" id = "tel" name ="tel" pattern = "[0-9]{10}" placeholder="0123456789">
+                    <label for = "doB">Ngày sinh</label>
+                    <input type = "date" id = "doB" name = "doB" max="2026-04-29" placeholder="dd/mm/yyyy">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Tài khoản</legend>
+            <div class = "from-grid">
+                <div class = "form-group">
+                    <label for = "username">Username</label>
+                    <input type = "text" id = "username" name = "username" pattern="[a-zA-Z0-9_]{3,20}" required placeholder="Username">
+                    <label for = "password">Password</label>
+                    <input type = "password" id = "password" name = "password" minlength="8" pattern = "(?=.*[A-Z])(?=.*\d).+" required placeholder="Tối thiểu 8 ký tự, có chữ hoa và số">
+                    <label for = "confirm_password">Xác nhận Password</label>
+                    <input type = "password" id = "confirm_password" name = "confirm_password" minlength="8" pattern = "(?=.*[A-Z])(?=.*\d).+" required placeholder="Nhập lại mật khẩu">
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Thông tin giao hàng</legend>
+            <div class = "form-grid">
+                <div class = "form-group">
+                    <label for = "city">Thành phố</label>
+                    <select id = "city" name = "city" required>
+                        <option value="">Chọn thành phố</option>
+                        <option value="Hanoi">Hà Nội</option>
+                        <option value="HCM">Hồ Chí Minh</option>
+                        <option value="Danang">Đà Nẵng</option>
+                        <option value = "ThanhHoa">Thanh Hóa</option>
+                        <option value = "HungYen">Hưng Yên</option>
+                    </select>
+                </div>
+                <div class = "form-group">
+                    <label for = "district">Quận/Huyện</label>
+                    <select id = "district" name = "district" required>
+                        <option value="">Chọn quận/huyện</option>
+                        <option value="BaDinh">Ba Đình</option>
+                        <option value="HoanKiem">Hoàn Kiếm</option>
+                        <option value="TayHo">Tây Hồ</option>
+                        <option value="Quan1">Quận 1</option>
+                        <option value="Quan2">Quận 2</option>
+                        <option value="VanGiang">Văn Giang</option>
+                    </select>
+                </div>
+                <div class = "form-group">
+                    <label for = "address">Địa chỉ chi tiết</label>
+                    <textarea id = "address" name = "address" rows = "3" required placeholder="Số nhà, tên đường, phường/xã..."></textarea>
+
+                </div>
+                <div class = "form-group"></div>
+    
+                    <legend>Giới tính</legend>
+                    <label class ="radio-option">
+                        <input type = "radio" name = "gender" value = "male" id = "gender_male">Nam
+                    </label>
+                    <label class ="radio-option">
+                        <input type = "radio" name = "gender" value = "female" id = "gender_female">Nữ
+                    </label>
+                    <label class ="radio-option">
+                        <input type = "radio" name = "gender" value = "other" id = "gender_other">Khác
+                    </label>
+               
+            </div>
+        </fieldset>
+        <div class = "checkbox-group">
+            <input type = "checkbox" id = "terms" name = "terms" required>
+            <label for = "terms">Tôi đồng ý với điều khoản</label>
+        </div>
+        <div class = "btn-group">
+            <button type = "submit">Đăng ký</button>
+            <button type = "reset">Nhập lại</button>
+        </div>
+        </form>
+    </div>
+</body>
+</html>
