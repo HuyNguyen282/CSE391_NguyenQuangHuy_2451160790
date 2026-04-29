@@ -277,3 +277,6 @@ _______________________________________________________________
 -   Trường hợp thẻ `<div>` vẫn phù hợp: Thẻ `<div>` vẫn là công cụ hữu ích khi cần một wrapper thuần CSS, tức khi cần một container chỉ để áp dụng các layout mà không có ý nghĩa ngữ nghĩa nào.
 
 
+___________________________________________________________________________________________
+## Phần D
+Link video: https://drive.google.com/file/d/1seoyLWi-5VRMajs7JesMWXofVeB97lGV/view?usp=sharing
