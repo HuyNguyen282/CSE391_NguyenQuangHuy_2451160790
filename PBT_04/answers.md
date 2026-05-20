@@ -88,3 +88,93 @@
 **Lý do:** Bố cục dọc bên trong card. `flex-direction: column` + `flex: 1` trên vùng text + `margin-top: auto` trên nút → nút luôn dính đáy dù text dài ngắn khác nhau.
 
 ---
+ 
+# PHẦN C — SUY LUẬN
+ 
+## Câu C1 (10đ) — Flexbox vs Grid: Khi nào dùng gì?
+ 
+### 1. Navigation bar ngang → **Flexbox**
+**Lý do:** Navbar là bố cục 1 chiều (ngang). `display: flex; justify-content: space-between` phân bố logo/menu/buttons hoàn hảo. Grid sẽ thừa phức tạp cho bố cục 1 hàng.
+ 
+### 2. Lưới ảnh Instagram (3 cột, số lượng không biết) → **Grid**
+**Lý do:** Lưới 2 chiều rõ ràng. `grid-template-columns: repeat(3, 1fr)` tự động xếp ảnh vào ô mà không cần biết số lượng. Flexbox sẽ khó kiểm soát alignment dọc.
+ 
+### 3. Layout blog: main + sidebar → **Grid**
+**Lý do:** Bố cục 2 vùng với tỷ lệ cố định: `grid-template-columns: 1fr 300px`. Grid cho phép kiểm soát cả 2 chiều, sidebar luôn đúng kích thước.
+ 
+### 4. Footer 4 cột → **Grid hoặc Flexbox** (cả hai đều tốt)
+- **Grid:** `repeat(4, 1fr)` → mỗi cột đúng 25%, căn dọc tốt hơn
+- **Flexbox:** `flex: 1` trên mỗi cột → đơn giản hơn nếu không cần kiểm soát hàng
+- **Nên chọn Grid** nếu cần responsive (thay đổi số cột dễ hơn).
+### 5. Card sản phẩm (ảnh trên, text giữa, nút dưới) → **Flexbox (column)**
+**Lý do:** Bố cục dọc bên trong card. `flex-direction: column` + `flex: 1` trên vùng text + `margin-top: auto` trên nút → nút luôn dính đáy dù text dài ngắn khác nhau.
+ 
+---
+ 
+## Câu C2 (10đ) — Debug Flexbox
+ 
+### Lỗi 1: Cards không đều chiều cao — nút "Mua" bị nhảy lên/xuống
+ 
+**Nguyên nhân:** `.card` không có `display: flex; flex-direction: column`, nên nút không biết "đáy" là đâu. Chiều cao card phụ thuộc nội dung, nút trôi tự do.
+ 
+```css
+/* ❌ Trước — bị lỗi */
+.card { width: 30%; margin: 1.5%; }
+.card .btn { padding: 10px; }
+ 
+/* ✅ Sau — đã sửa */
+.card {
+  width: 30%;
+  margin: 1.5%;
+  display: flex;            /* Thêm flex */
+  flex-direction: column;   /* Xếp dọc */
+}
+.card .btn {
+  padding: 10px;
+  margin-top: auto;         /* Đẩy nút xuống đáy luôn */
+}
+```
+ 
+---
+ 
+### Lỗi 2: Items vẫn dính góc trái trên dù dùng flexbox
+ 
+**Nguyên nhân:** Flex container thiếu `justify-content: center` (căn ngang) và `align-items: center` (căn dọc). Mặc định flex items xếp từ trái và từ trên.
+ 
+```css
+/* ❌ Trước — bị lỗi */
+.hero {
+  height: 100vh;
+  display: flex;
+  /* Không có justify-content và align-items */
+}
+ 
+/* ✅ Sau — đã sửa */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;  /* Căn giữa theo trục ngang */
+  align-items: center;      /* Căn giữa theo trục dọc */
+}
+```
+ 
+---
+ 
+### Lỗi 3: Sidebar bị co lại khi content quá dài
+ 
+**Nguyên nhân:** Mặc định flex items có `flex-shrink: 1`, nghĩa là được phép co lại khi container không đủ chỗ. Sidebar `width: 250px` chỉ là "gợi ý", không phải kích thước cứng.
+ 
+```css
+/* ❌ Trước — bị lỗi */
+.layout { display: flex; }
+.sidebar { width: 250px; }          /* Bị co khi content dài */
+.content { flex: 1; }
+ 
+/* ✅ Sau — đã sửa */
+.layout { display: flex; }
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;            /* Cấm co lại — giữ đúng 250px */
+}
+.content { flex: 1; }        /* Content tự co giãn phần còn lại */
+```
