@@ -1,151 +1,207 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grid Layout</title>
-
-    <link rel="stylesheet" href="grid.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B3 — Grid Layout E-Commerce</title>
+  <link rel="stylesheet" href="grid.css" />
 </head>
-
 <body>
 
-    <div class="container">
+  <!-- ===== LAYOUT CHÍNH DÙNG CSS GRID ===== -->
+  <div class="page-grid">
 
-        <!-- HEADER -->
-        <header>
-            <h1>My E-Commerce</h1>
-        </header>
+    <!-- HEADER: grid-column: 1 / -1 → span full width -->
+    <header class="area-header">
+      <div class="header-inner">
+        <div class="logo">🛍️ GridMart</div>
+        <nav>
+          <a href="#">Trang chủ</a>
+          <a href="#">Sản phẩm</a>
+          <a href="#">Khuyến mãi</a>
+          <a href="#">Liên hệ</a>
+        </nav>
+        <div class="header-actions">
+          <button class="btn-cart">🛒 Giỏ hàng (3)</button>
+        </div>
+      </div>
+    </header>
 
-        <!-- HERO -->
-        <section class="hero">
+    <!-- HERO BANNER: grid-column: 1 / -1 → span full width -->
+    <section class="area-hero">
+      <div class="hero-content">
+        <h1>Sale Hè 2025 🔥</h1>
+        <p>Giảm đến <strong>50%</strong> toàn bộ sản phẩm công nghệ</p>
+        <button class="btn-hero">Mua sắm ngay →</button>
+      </div>
+      <!-- Featured card: grid-column: span 2 (BONUS) -->
+      <div class="hero-featured">
+        <span class="featured-badge">⭐ Nổi bật</span>
+        <div class="featured-img">📱</div>
+        <h3>iPhone 15 Pro Max</h3>
+        <p class="featured-price">34.990.000₫</p>
+        <button class="btn-buy-featured">Mua ngay</button>
+      </div>
+    </section>
 
-            <div class="hero-text">
-                <h2>BIG SALE 50%</h2>
-                <p>Mua sắm công nghệ với giá cực sốc</p>
-                <button>Shop Now</button>
-            </div>
+    <!-- SIDEBAR: cột trái 200px -->
+    <aside class="area-sidebar">
+      <div class="filter-box">
+        <h3>Bộ lọc</h3>
 
-            <!-- BONUS -->
-            <div class="featured-product">
-                <img src="https://picsum.photos/400/250?1">
+        <div class="filter-group">
+          <h4>Danh mục</h4>
+          <label><input type="checkbox" checked /> Điện thoại</label>
+          <label><input type="checkbox" /> Laptop</label>
+          <label><input type="checkbox" /> Tai nghe</label>
+          <label><input type="checkbox" /> Phụ kiện</label>
+        </div>
 
-                <h3>MacBook Pro</h3>
+        <div class="filter-group">
+          <h4>Giá</h4>
+          <label><input type="radio" name="price" /> Dưới 5 triệu</label>
+          <label><input type="radio" name="price" checked /> 5 – 20 triệu</label>
+          <label><input type="radio" name="price" /> Trên 20 triệu</label>
+        </div>
 
-                <p>35.000.000đ</p>
-            </div>
+        <div class="filter-group">
+          <h4>Thương hiệu</h4>
+          <label><input type="checkbox" checked /> Apple</label>
+          <label><input type="checkbox" /> Samsung</label>
+          <label><input type="checkbox" /> Sony</label>
+          <label><input type="checkbox" /> Logitech</label>
+        </div>
 
-        </section>
+        <button class="btn-filter">Áp dụng</button>
+      </div>
+    </aside>
 
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
+    <!-- MAIN CONTENT: 1fr (tự co giãn) -->
+    <main class="area-main">
+      <div class="main-toolbar">
+        <span class="result-count">Tìm thấy <strong>48</strong> sản phẩm</span>
+        <select class="sort-select">
+          <option>Sắp xếp: Phổ biến nhất</option>
+          <option>Giá tăng dần</option>
+          <option>Giá giảm dần</option>
+          <option>Mới nhất</option>
+        </select>
+      </div>
 
-            <h2>Bộ lọc</h2>
+      <!-- Product grid con: 3 cột bên trong main -->
+      <div class="product-grid">
 
-            <label>
-                <input type="checkbox">
-                Laptop
-            </label>
+        <div class="p-card">
+          <div class="p-img">💻</div>
+          <div class="p-body">
+            <h4>MacBook Air M3</h4>
+            <p class="p-price">32.990.000₫</p>
+            <button>Mua ngay</button>
+          </div>
+        </div>
 
-            <label>
-                <input type="checkbox">
-                Gaming
-            </label>
+        <div class="p-card hot">
+          <span class="hot-badge">HOT</span>
+          <div class="p-img">📱</div>
+          <div class="p-body">
+            <h4>Samsung Galaxy S24 Ultra</h4>
+            <p class="p-price">28.990.000₫</p>
+            <button>Mua ngay</button>
+          </div>
+        </div>
 
-            <label>
-                <input type="checkbox">
-                Điện thoại
-            </label>
+        <div class="p-card">
+          <div class="p-img">🎧</div>
+          <div class="p-body">
+            <h4>AirPods Pro 2</h4>
+            <p class="p-price">6.490.000₫</p>
+            <button>Mua ngay</button>
+          </div>
+        </div>
 
-            <label>
-                <input type="checkbox">
-                Phụ kiện
-            </label>
+        <div class="p-card">
+          <div class="p-img">⌨️</div>
+          <div class="p-body">
+            <h4>Keychron K8 Pro</h4>
+            <p class="p-price">2.890.000₫</p>
+            <button>Mua ngay</button>
+          </div>
+        </div>
 
-        </aside>
+        <div class="p-card hot">
+          <span class="hot-badge">SALE</span>
+          <div class="p-img">🖱️</div>
+          <div class="p-body">
+            <h4>Logitech MX Master 3S</h4>
+            <p class="p-price">2.290.000₫</p>
+            <button>Mua ngay</button>
+          </div>
+        </div>
 
-        <!-- MAIN -->
-        <main class="products">
+        <div class="p-card">
+          <div class="p-img">🖥️</div>
+          <div class="p-body">
+            <h4>Dell UltraSharp 27" 4K</h4>
+            <p class="p-price">16.500.000₫</p>
+            <button>Mua ngay</button>
+          </div>
+        </div>
 
-            <div class="card">
-                <img src="https://picsum.photos/250/180?2">
+      </div><!-- /.product-grid -->
+    </main>
 
-                <h3>Laptop Dell</h3>
+    <!-- ADS SIDEBAR: cột phải 200px -->
+    <aside class="area-ads">
+      <div class="ad-banner">
+        <div class="ad-img">🎁</div>
+        <h4>Miễn phí vận chuyển</h4>
+        <p>Cho đơn hàng từ 500.000₫</p>
+      </div>
+      <div class="ad-banner">
+        <div class="ad-img">💳</div>
+        <h4>Trả góp 0%</h4>
+        <p>12 tháng không lãi suất</p>
+      </div>
+      <div class="ad-banner promo">
+        <div class="ad-img">⚡</div>
+        <h4>Flash Sale</h4>
+        <p>Mỗi ngày 12:00 – 14:00</p>
+        <div class="countdown">02:45:30</div>
+      </div>
+    </aside>
 
-                <p>20.000.000đ</p>
+    <!-- FOOTER: grid-column: 1 / -1 → span full width -->
+    <footer class="area-footer">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h4>🛍️ GridMart</h4>
+          <p>Mua sắm thông minh, tiết kiệm tối đa</p>
+        </div>
+        <div class="footer-col">
+          <h4>Về chúng tôi</h4>
+          <a href="#">Giới thiệu</a>
+          <a href="#">Tuyển dụng</a>
+          <a href="#">Tin tức</a>
+        </div>
+        <div class="footer-col">
+          <h4>Hỗ trợ</h4>
+          <a href="#">Hướng dẫn mua hàng</a>
+          <a href="#">Chính sách đổi trả</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div class="footer-col">
+          <h4>Liên hệ</h4>
+          <a href="#">📞 1800-1234</a>
+          <a href="#">✉️ support@gridmart.vn</a>
+          <a href="#">📍 Hà Nội, Việt Nam</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 GridMart. All rights reserved.</p>
+      </div>
+    </footer>
 
-                <button>Mua</button>
-            </div>
-
-            <div class="card">
-                <img src="https://picsum.photos/250/180?3">
-
-                <h3>Gaming Mouse</h3>
-
-                <p>500.000đ</p>
-
-                <button>Mua</button>
-            </div>
-
-            <div class="card">
-                <img src="https://picsum.photos/250/180?4">
-
-                <h3>Mechanical Keyboard</h3>
-
-                <p>1.200.000đ</p>
-
-                <button>Mua</button>
-            </div>
-
-            <div class="card">
-                <img src="https://picsum.photos/250/180?5">
-
-                <h3>Headphone</h3>
-
-                <p>800.000đ</p>
-
-                <button>Mua</button>
-            </div>
-
-            <div class="card">
-                <img src="https://picsum.photos/250/180?6">
-
-                <h3>Monitor</h3>
-
-                <p>4.500.000đ</p>
-
-                <button>Mua</button>
-            </div>
-
-            <div class="card">
-                <img src="https://picsum.photos/250/180?7">
-
-                <h3>Smartphone</h3>
-
-                <p>12.000.000đ</p>
-
-                <button>Mua</button>
-            </div>
-
-        </main>
-
-        <!-- ADS -->
-        <aside class="ads">
-
-            <h2>Quảng cáo</h2>
-
-            <img src="https://picsum.photos/180/500?8">
-
-        </aside>
-
-        <!-- FOOTER -->
-        <footer>
-            <p>© 2026 My E-Commerce</p>
-        </footer>
-
-    </div>
+  </div><!-- /.page-grid -->
 
 </body>
-
 </html>

@@ -1,256 +1,431 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ===== RESET & VARIABLES ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary:   #111827;
+  --accent:    #6366f1;
+  --accent2:   #ec4899;
+  --gold:      #f59e0b;
+  --bg:        #f8fafc;
+  --white:     #ffffff;
+  --text:      #1f2937;
+  --muted:     #6b7280;
+  --border:    #e5e7eb;
+  --radius:    12px;
+  --shadow:    0 2px 16px rgba(0,0,0,0.08);
 }
 
 body {
-    font-family: Arial;
-    background: #f4f4f4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
 
-/* MAIN GRID LAYOUT */
+/* ========================================
+   LAYOUT CHÍNH — CSS GRID
+   Dùng grid-template-areas (BONUS)
+   3 cột: 200px | 1fr | 200px
+   Các vùng: header, hero, sidebar,
+             main, ads, footer
+======================================== */
 
-.container {
-    display: grid;
+.page-grid {
+  display: grid;
 
-    grid-template-columns: 200px 1fr 200px;
+  /* Cột: sidebar trái | nội dung chính | ads phải */
+  grid-template-columns: 200px 1fr 200px;
 
-    grid-template-areas:
-        "header header header"
-        "hero hero hero"
-        "sidebar products ads"
-        "footer footer footer";
+  /* Hàng: header, hero, content zone, footer */
+  grid-template-rows: auto auto 1fr auto;
 
-    gap: 20px;
+  /* BONUS: Dùng grid-template-areas → đặt tên vùng */
+  grid-template-areas:
+    "header  header  header"
+    "hero    hero    hero"
+    "sidebar main    ads"
+    "footer  footer  footer";
 
-    padding: 20px;
-
-    min-height: 100vh;
+  gap: 0;
+  min-height: 100vh;
 }
 
-/* HEADER */
-
-header {
-    grid-area: header;
-
-    background: #222;
-    color: white;
-
-    padding: 25px;
-
-    text-align: center;
+/* ===== HEADER: span full width ===== */
+.area-header {
+  grid-area: header;             /* Tham chiếu named area */
+  /* hoặc: grid-column: 1 / -1; */
+  background: var(--primary);
+  color: var(--white);
+  padding: 0 32px;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
 
-/* HERO */
-
-.hero {
-    grid-area: hero;
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 20px;
-
-    background: white;
-
-    padding: 30px;
-
-    border-radius: 10px;
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
 }
 
-.hero-text {
-    background: orange;
-
-    color: white;
-
-    padding: 30px;
-
-    border-radius: 10px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent);
+  white-space: nowrap;
 }
 
-.hero-text h2 {
-    font-size: 40px;
-    margin-bottom: 15px;
+.area-header nav {
+  display: flex;
+  gap: 4px;
+}
+.area-header nav a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.75);
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+}
+.area-header nav a:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.1);
 }
 
-.hero-text button {
-    width: 150px;
+.btn-cart {
+  padding: 8px 20px;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.btn-cart:hover { background: #4f46e5; }
 
-    margin-top: 20px;
-
-    padding: 12px;
-
-    border: none;
-
-    background: white;
-    color: orange;
-
-    font-weight: bold;
-
-    border-radius: 5px;
-
-    cursor: pointer;
+/* ===== HERO BANNER: span full width ===== */
+.area-hero {
+  grid-area: hero;               /* grid-column: 1 / -1 → full width */
+  background: linear-gradient(135deg, var(--primary) 0%, #1e1b4b 60%, #312e81 100%);
+  color: var(--white);
+  padding: 48px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  min-height: 240px;
 }
 
-/* BONUS FEATURED PRODUCT */
+.hero-content { max-width: 480px; }
+.hero-content h1 {
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.hero-content p {
+  font-size: 18px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 24px;
+}
+.hero-content strong { color: var(--gold); font-size: 22px; }
 
-.featured-product {
-    grid-column: span 2;
-
-    background: #fafafa;
-
-    border-radius: 10px;
-
-    padding: 20px;
-
-    text-align: center;
+.btn-hero {
+  padding: 14px 32px;
+  background: var(--accent2);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+.btn-hero:hover {
+  background: #db2777;
+  transform: translateY(-2px);
 }
 
-.featured-product img {
-    width: 100%;
+/* BONUS: Featured card trong hero */
+.hero-featured {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  min-width: 200px;
+  position: relative;
+}
+.featured-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.featured-img { font-size: 56px; margin: 12px 0; }
+.hero-featured h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.featured-price { font-size: 20px; font-weight: 800; color: var(--gold); margin-bottom: 16px; }
+.btn-buy-featured {
+  padding: 10px 24px;
+  background: var(--white);
+  color: var(--primary);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+.btn-buy-featured:hover { background: var(--gold); }
 
-    border-radius: 10px;
+/* ===== SIDEBAR (cột trái 200px) ===== */
+.area-sidebar {
+  grid-area: sidebar;
+  background: var(--white);
+  border-right: 1px solid var(--border);
+  padding: 20px;
 }
 
-.featured-product h3 {
-    margin-top: 15px;
+.filter-box h3 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent);
 }
 
-.featured-product p {
-    color: red;
-
-    font-weight: bold;
-
-    margin-top: 10px;
+.filter-group {
+  margin-bottom: 20px;
+}
+.filter-group h4 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.filter-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+.filter-group input[type="checkbox"],
+.filter-group input[type="radio"] {
+  accent-color: var(--accent);
 }
 
-/* SIDEBAR */
+.btn-filter {
+  width: 100%;
+  padding: 10px;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+.btn-filter:hover { background: #4f46e5; }
 
-.sidebar {
-    grid-area: sidebar;
-
-    background: white;
-
-    padding: 20px;
-
-    border-radius: 10px;
+/* ===== MAIN CONTENT (1fr) ===== */
+.area-main {
+  grid-area: main;
+  padding: 24px;
+  background: var(--bg);
 }
 
-.sidebar h2 {
-    margin-bottom: 20px;
+.main-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.result-count { font-size: 14px; color: var(--muted); }
+.result-count strong { color: var(--text); }
+.sort-select {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 14px;
+  background: var(--white);
+  color: var(--text);
+  cursor: pointer;
+  outline: none;
 }
 
-.sidebar label {
-    display: block;
-
-    margin-bottom: 15px;
+/* Product grid con: 3 cột bên trong main */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   /* 3 cột đều nhau */
+  gap: 16px;
 }
 
-/* PRODUCTS GRID */
-
-.products {
-    grid-area: products;
-
-    display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-
-    gap: 20px;
+.p-card {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.p-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.14);
 }
 
-/* PRODUCT CARD */
-
-.card {
-    background: white;
-
-    border-radius: 10px;
-
-    overflow: hidden;
-
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-    transition: 0.3s;
+.hot-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--accent2);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+.p-img {
+  font-size: 48px;
+  text-align: center;
+  padding: 16px 0;
+  background: var(--bg);
+  border-radius: 8px;
+  margin-bottom: 12px;
 }
 
-.card img {
-    width: 100%;
-    height: 180px;
+.p-body { flex: 1; display: flex; flex-direction: column; }
+.p-body h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.4;
+  flex: 1;
+}
+.p-price {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.p-body button {
+  padding: 10px;
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: auto;
+}
+.p-body button:hover { background: var(--accent); }
 
-    object-fit: cover;
+/* ===== ADS SIDEBAR (cột phải 200px) ===== */
+.area-ads {
+  grid-area: ads;
+  background: var(--white);
+  border-left: 1px solid var(--border);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.card h3 {
-    margin: 15px;
+.ad-banner {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.ad-banner.promo {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border-color: var(--gold);
+}
+.ad-img { font-size: 32px; margin-bottom: 8px; }
+.ad-banner h4 {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+.ad-banner p { font-size: 11px; color: var(--muted); }
+.countdown {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--accent2);
+  font-variant-numeric: tabular-nums;
 }
 
-.card p {
-    margin: 0 15px;
-
-    color: red;
-
-    font-weight: bold;
+/* ===== FOOTER: span full width ===== */
+.area-footer {
+  grid-area: footer;             /* grid-column: 1 / -1 → full width */
+  background: var(--primary);
+  color: rgba(255,255,255,0.8);
+  padding: 48px 32px 0;
 }
 
-.card button {
-    margin: 15px;
-
-    padding: 10px;
-
-    width: calc(100% - 30px);
-
-    border: none;
-
-    background: #222;
-    color: white;
-
-    border-radius: 5px;
-
-    cursor: pointer;
+.footer-inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;  /* Grid con cho footer */
+  gap: 32px;
+  max-width: 100%;
+  padding-bottom: 32px;
 }
 
-/* ADS */
-
-.ads {
-    grid-area: ads;
-
-    background: white;
-
-    padding: 20px;
-
-    border-radius: 10px;
-
-    text-align: center;
+.footer-col h4 {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 16px;
 }
-
-.ads img {
-    width: 100%;
-
-    margin-top: 20px;
-
-    border-radius: 10px;
+.footer-col p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.6);
 }
+.footer-col a {
+  display: block;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-size: 13px;
+  margin-bottom: 8px;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--accent); }
 
-/* FOOTER */
-
-footer {
-    grid-area: footer;
-
-    background: #222;
-    color: white;
-
-    text-align: center;
-
-    padding: 20px;
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 16px 0;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
 }
