@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Specificity Battle - Bai B3</title>
+    <link rel="stylesheet" href="specificity.css">
+</head>
+<body>
+
+    <h1>Specificity Battle - Bai B3</h1>
+
+    <p>Phan tu duoc target: &lt;p id="demo" class="text highlight"&gt;</p>
+    <p>10 rules duoc viet trong specificity.css, tu thap den cao.</p>
+    <p>Rule co specificity cao nhat quyet dinh mau hien thi.</p>
+
+    <div class="wrapper">
+        <p id="demo" class="text highlight">Hello World</p>
+    </div>
+
+    <div class="rules-table">
+        <h2>Danh sach 10 rules (tu thap den cao)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rule</th>
+                    <th>Specificity</th>
+                    <th>Mau</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>p</td><td>(0,0,1)</td><td>gray</td></tr>
+                <tr><td>.text</td><td>(0,1,0)</td><td>navy</td></tr>
+                <tr><td>p.text</td><td>(0,1,1)</td><td>teal</td></tr>
+                <tr><td>.text.highlight</td><td>(0,2,0)</td><td>orange</td></tr>
+                <tr><td>p.text.highlight</td><td>(0,2,1)</td><td>purple</td></tr>
+                <tr><td>#demo</td><td>(1,0,0)</td><td>red</td></tr>
+                <tr><td>p#demo</td><td>(1,0,1)</td><td>blue</td></tr>
+                <tr><td>.text#demo</td><td>(1,1,0)</td><td>pink</td></tr>
+                <tr><td>p.text#demo</td><td>(1,1,1)</td><td>lime/green</td></tr>
+                <tr><td>.highlight#demo</td><td>(1,1,0)</td><td>chocolate (bang .text#demo, den sau nen thang)</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="note">
+        <p>Ket qua: "Hello World" hien thi mau CHOCOLATE vi .highlight#demo cung co specificity (1,1,0) nhu .text#demo nhung den sau trong CSS file.</p>
+        <p>Thu tu rules: Neu 2 rules co specificity bang nhau, rule nao khai bao SAU se thang.</p>
+    </div>
+
+</body>
+</html>

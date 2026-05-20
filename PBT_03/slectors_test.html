@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Selectors Test - Cau A2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h3 {
+            margin-top: 30px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        .result {
+            background: #f5f5f5;
+            padding: 10px;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        /* --- Selector 1: h1 --- */
+        h1 { color: crimson; }
+
+        /* --- Selector 2: .price --- */
+        .price { background: yellow; }
+
+        /* --- Selector 3: #app header --- */
+        #app header { border: 2px solid blue; }
+
+        /* --- Selector 4: nav a:first-child --- */
+        nav a:first-child { font-weight: bold; text-decoration: underline; }
+
+        /* --- Selector 5: .product.featured h2 --- */
+        .product.featured h2 { color: green; }
+
+        /* --- Selector 6: article > p --- */
+        article > p { border-left: 3px solid orange; padding-left: 5px; }
+
+        /* --- Selector 7: a[href="/"] --- */
+        a[href="/"] { background: lightblue; }
+
+        /* --- Selector 8: .top-bar.dark h1 --- */
+        .top-bar.dark h1 { letter-spacing: 3px; }
+    </style>
+</head>
+<body>
+
+    <h3>Ket qua du doan selectors - Cau A2</h3>
+
+    <div class="result">1. h1 -&gt; Chon "ShopTLU" (mau crimson)</div>
+    <div class="result">2. .price -&gt; Chon "25.990.000d" va "45.990.000d" (nen vang)</div>
+    <div class="result">3. #app header -&gt; Chon toan bo header (vien xanh)</div>
+    <div class="result">4. nav a:first-child -&gt; Chon "Home" (in dam + gach chan)</div>
+    <div class="result">5. .product.featured h2 -&gt; Chon "MacBook Pro" (mau xanh la)</div>
+    <div class="result">6. article &gt; p -&gt; Chon tat ca 4 the p la con truc tiep (vien trai cam)</div>
+    <div class="result">7. a[href="/"] -&gt; Chon "Home" (nen xanh nhat)</div>
+    <div class="result">8. .top-bar.dark h1 -&gt; Chon "ShopTLU" (letter-spacing lon)</div>
+
+    <hr>
+
+    <div id="app">
+        <header class="top-bar dark">
+            <h1>ShopTLU</h1>
+            <nav>
+                <a href="/" class="active">Home</a>
+                <a href="/products">Products</a>
+                <a href="/about">About</a>
+            </nav>
+        </header>
+        <main>
+            <article class="product">
+                <h2>iPhone 16</h2>
+                <p class="price">25.990.000d</p>
+                <p>Mo ta san pham...</p>
+            </article>
+            <article class="product featured">
+                <h2>MacBook Pro</h2>
+                <p class="price">45.990.000d</p>
+                <p>Mo ta san pham...</p>
+            </article>
+        </main>
+    </div>
+
+</body>
+</html>

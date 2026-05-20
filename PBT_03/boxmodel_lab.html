@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Box Model Lab - Bai B2</title>
+    <link rel="stylesheet" href="boxmodel.css">
+</head>
+<body>
+
+    <h1>Box Model Lab</h1>
+
+    <!-- Phan 1: content-box vs border-box -->
+    <section>
+        <h2>Phan 1: content-box vs border-box</h2>
+        <p>Ca 2 hop duoi day deu co: width: 300px, padding: 20px, border: 5px solid</p>
+
+        <div class="demo-row">
+            <div class="box content-box-demo">
+                <strong>Hop 1: content-box</strong>
+                <p>width: 300px</p>
+                <p>padding: 20px (x2 = 40px)</p>
+                <p>border: 5px (x2 = 10px)</p>
+                <p>=> Chieu rong thuc te: 350px</p>
+            </div>
+
+            <div class="box border-box-demo">
+                <strong>Hop 2: border-box</strong>
+                <p>width: 300px (bao gom padding va border)</p>
+                <p>padding: 20px (x2 = 40px)</p>
+                <p>border: 5px (x2 = 10px)</p>
+                <p>=> Content thuc te: 250px, Chieu rong hien thi: 300px</p>
+            </div>
+        </div>
+
+        <div class="explanation">
+            <p>Mo DevTools (F12), chon tab Elements, click vao tung hop, xem Box Model diagram o tab Computed de kiem chung.</p>
+            <p>Hop 1 (content-box): DevTools hien thi chieu rong = 350px</p>
+            <p>Hop 2 (border-box): DevTools hien thi chieu rong = 300px</p>
+        </div>
+    </section>
+
+    <!-- Phan 2: Layout 3 cot -->
+    <section>
+        <h2>Phan 2: Layout 3 cot - Tong = 1000px</h2>
+        <p>Container rong 1000px. 3 cot: 250px + 500px + 250px = 1000px (dung border-box).</p>
+
+        <div class="layout-container">
+            <div class="col-left">
+                <strong>Sidebar trai</strong>
+                <p>width: 250px</p>
+                <p>padding: 15px</p>
+                <p>border-box</p>
+            </div>
+            <div class="col-center">
+                <strong>Noi dung chinh</strong>
+                <p>width: 500px</p>
+                <p>padding: 20px</p>
+                <p>border-box</p>
+            </div>
+            <div class="col-right">
+                <strong>Quang cao</strong>
+                <p>width: 250px</p>
+                <p>padding: 15px</p>
+                <p>border-box</p>
+            </div>
+        </div>
+        <p class="clearfix-note">Tong 3 cot = 250 + 500 + 250 = 1000px - vua khit container.</p>
+    </section>
+
+    <!-- Demo Margin Collapse -->
+    <section>
+        <h2>Demo Margin Collapse</h2>
+        <p>box-a co margin-bottom: 25px, box-b co margin-top: 40px</p>
+        <p>Khoang cach thuc te giua 2 hop = 40px (khong phai 65px)</p>
+
+        <div class="margin-box-a">box-a (margin-bottom: 25px)</div>
+        <div class="margin-box-b">box-b (margin-top: 40px)</div>
+    </section>
+
+</body>
+</html>
