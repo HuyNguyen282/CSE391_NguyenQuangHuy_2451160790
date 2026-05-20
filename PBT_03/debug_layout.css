@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 20px;
+    background: #f5f5f5;
+    color: #333;
+}
+
+h1 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+section {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+section > p {
+    font-size: 0.88rem;
+    color: #555;
+    margin-bottom: 12px;
+}
+
+/* Container */
+.container {
+    width: 960px;
+    margin: 0;
+    border: 2px dashed #999;
+    overflow: hidden;
+    background: #eee;
+}
+
+/* Chung cho sidebar va content */
+.sidebar, .content {
+    float: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 0.85rem;
+}
+
+.sidebar p, .content p {
+    margin: 3px 0;
+}
+
+/* Layout bi vo */
+.broken-sidebar {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #e74c3c;
+    background: #ffe0e0;
+}
+
+.broken-content {
+    width: 660px;
+    padding: 30px;
+    border: 1px solid #e74c3c;
+    background: #fff0e0;
+}
+
+/* Cach sua 1: border-box */
+.fix1-sidebar {
+    box-sizing: border-box;
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #27ae60;
+    background: #e0ffe0;
+}
+
+.fix1-content {
+    box-sizing: border-box;
+    width: 660px;
+    padding: 30px;
+    border: 1px solid #27ae60;
+    background: #f0fff0;
+}
+
+/* Cach sua 2: giam width, khong dung border-box */
+.fix2-sidebar {
+    box-sizing: content-box;
+    width: 258px;
+    padding: 20px;
+    border: 1px solid #2980b9;
+    background: #e0f0ff;
+}
+
+.fix2-content {
+    box-sizing: content-box;
+    width: 598px;
+    padding: 30px;
+    border: 1px solid #2980b9;
+    background: #f0f8ff;
+}
+
+/* Clearfix */
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}

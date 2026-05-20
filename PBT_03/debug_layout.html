@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Debug Layout - Cau C1</title>
+    <link rel="stylesheet" href="debug_layout.css">
+</head>
+<body>
+
+    <h1>Debug Layout - Cau C1</h1>
+
+    <section>
+        <h2>Layout bi vo (loi goc)</h2>
+        <p>Sidebar thuc te: 300 + 20 + 20 + 1 + 1 = 342px. Content thuc te: 660 + 30 + 30 + 1 + 1 = 722px. Tong = 1064px > 960px.</p>
+
+        <div class="container broken">
+            <div class="sidebar broken-sidebar">
+                <strong>Sidebar (bi vo)</strong>
+                <p>width: 300px</p>
+                <p>padding: 20px moi ben</p>
+                <p>border: 1px moi ben</p>
+                <p>Thuc te: 342px</p>
+            </div>
+            <div class="content broken-content">
+                <strong>Content (bi vo)</strong>
+                <p>width: 660px</p>
+                <p>padding: 30px moi ben</p>
+                <p>border: 1px moi ben</p>
+                <p>Thuc te: 722px</p>
+                <p>Tong: 342+722=1064px > 960px => bi day xuong!</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Cach sua 1: Dung border-box</h2>
+        <p>Them box-sizing: border-box vao sidebar va content. Width set la kich thuoc tong bao gom ca padding va border.</p>
+
+        <div class="container">
+            <div class="sidebar fix1-sidebar">
+                <strong>Sidebar (border-box)</strong>
+                <p>width: 300px (bao gom padding va border)</p>
+                <p>padding: 20px, border: 1px</p>
+                <p>Thuc te: 300px</p>
+            </div>
+            <div class="content fix1-content">
+                <strong>Content (border-box)</strong>
+                <p>width: 660px (bao gom padding va border)</p>
+                <p>padding: 30px, border: 1px</p>
+                <p>Thuc te: 660px</p>
+                <p>Tong: 300+660=960px - dung!</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Cach sua 2: Giam width, khong dung border-box</h2>
+        <p>Tinh nguoc lai: sidebar width = 300 - 20 - 20 - 1 - 1 = 258px. Content width = 660 - 30 - 30 - 1 - 1 = 598px.</p>
+
+        <div class="container">
+            <div class="sidebar fix2-sidebar">
+                <strong>Sidebar (giam width)</strong>
+                <p>width: 258px</p>
+                <p>padding: 20px, border: 1px</p>
+                <p>Thuc te: 300px</p>
+            </div>
+            <div class="content fix2-content">
+                <strong>Content (giam width)</strong>
+                <p>width: 598px</p>
+                <p>padding: 30px, border: 1px</p>
+                <p>Thuc te: 660px</p>
+                <p>Tong: 300+660=960px - dung!</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
