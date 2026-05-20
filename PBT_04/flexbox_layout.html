@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>B2 — Flexbox Navigation & Cards</title>
+    <link rel="stylesheet" href="flexbox.css" />
+</head>
+
+<body>
+
+    <!-- PHẦN 1: NAVBAR FLEXBOX -->
+    <header class="navbar">
+        <!-- Logo bên trái -->
+        <div class="nav-logo">⚡ FlexShop</div>
+
+        <!-- Menu items giữa -->
+        <nav class="nav-menu">
+            <a href="#" class="nav-link">Trang chủ</a>
+            <a href="#" class="nav-link">Sản phẩm</a>
+            <a href="#" class="nav-link">Khuyến mãi</a>
+            <a href="#" class="nav-link">Blog</a>
+            <a href="#" class="nav-link">Về chúng tôi</a>
+        </nav>
+
+        <!-- Auth buttons bên phải -->
+        <div class="nav-auth">
+            <button class="btn-login">Đăng nhập</button>
+            <button class="btn-register">Đăng ký</button>
+        </div>
+    </header>
+
+    <!-- PHẦN 2: PRODUCT CARDS GRID -->
+    <main class="shop-main">
+        <h2 class="section-title">Sản phẩm nổi bật</h2>
+
+        <!-- Container: display:flex; flex-wrap:wrap -->
+        <div class="card-container">
+
+            <!-- Card 1 -->
+            <div class="product-card">
+                <div class="card-image">📱</div>
+                <div class="card-info">
+                    <h3 class="card-name">iPhone 15 Pro Max</h3>
+                    <p class="card-price">34.990.000₫</p>
+                </div>
+                <!-- margin-top:auto → luôn dính đáy card -->
+                <button class="card-btn">Mua ngay</button>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="product-card">
+                <div class="card-image">💻</div>
+                <div class="card-info">
+                    <h3 class="card-name">MacBook Air M3 13"</h3>
+                    <p class="card-price">32.990.000₫</p>
+                </div>
+                <button class="card-btn">Mua ngay</button>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="product-card">
+                <div class="card-image">🎧</div>
+                <div class="card-info">
+                    <h3 class="card-name">Sony WH-1000XM5</h3>
+                    <p class="card-price">7.490.000₫</p>
+                </div>
+                <button class="card-btn">Mua ngay</button>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="product-card">
+                <div class="card-image">⌨️</div>
+                <div class="card-info">
+                    <h3 class="card-name">Keychron Q1 Pro</h3>
+                    <p class="card-price">3.690.000₫</p>
+                </div>
+                <button class="card-btn">Mua ngay</button>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="product-card">
+                <div class="card-image">🖱️</div>
+                <div class="card-info">
+                    <h3 class="card-name">Logitech MX Master 3S</h3>
+                    <p class="card-price">2.290.000₫</p>
+                </div>
+                <button class="card-btn">Mua ngay</button>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="product-card">
+                <div class="card-image">📷</div>
+                <div class="card-info">
+                    <h3 class="card-name">Sony A7 IV</h3>
+                    <p class="card-price">69.990.000₫</p>
+                </div>
+                <button class="card-btn">Mua ngay</button>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="product-card">
+                <div class="card-image">🖥️</div>
+                <div class="card-info">
+                    <h3 class="card-name">LG UltraWide 34" 4K</h3>
+                    <p class="card-price">18.500.000₫</p>
+                </div>
+                <button class="card-btn">Mua ngay</button>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="product-card">
+                <div class="card-image">🎮</div>
+                <div class="card-info">
+                    <h3 class="card-name">PS5 Digital Edition</h3>
+                    <p class="card-price">11.490.000₫</p>
+                </div>
+                <button class="card-btn">Mua ngay</button>
+            </div>
+
+        </div><!-- /.card-container -->
+    </main>
+
+</body>
+
+</html>

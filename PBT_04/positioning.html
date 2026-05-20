@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B1 — Positioning Playground</title>
+  <link rel="stylesheet" href="positioning.css" />
+</head>
+<body>
+
+  <!-- 1. Fixed Header -->
+  <header class="fixed-header">
+    <div class="header-inner">
+      <div class="logo">🛒 ShopVN</div>
+      <nav>
+        <a href="#">Trang chủ</a>
+        <a href="#">Sản phẩm</a>
+        <a href="#">Về chúng tôi</a>
+        <a href="#">Liên hệ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page wrapper -->
+  <div class="page-wrapper">
+
+    <!-- 2. Sticky Sidebar -->
+    <aside class="sticky-sidebar">
+      <h3>Danh mục</h3>
+      <ul>
+        <li><a href="#">📱 Điện thoại</a></li>
+        <li><a href="#">💻 Laptop</a></li>
+        <li><a href="#">🎧 Tai nghe</a></li>
+        <li><a href="#">⌨️ Bàn phím</a></li>
+        <li><a href="#">🖱️ Chuột</a></li>
+        <li><a href="#">📷 Camera</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <h2>Sản phẩm nổi bật</h2>
+      <div class="product-grid">
+
+        <!-- 3. Card with HOT badge (position: absolute) -->
+        <div class="card">
+          <span class="badge-hot">HOT</span>
+          <div class="card-img">📱</div>
+          <div class="card-body">
+            <h4>iPhone 15 Pro</h4>
+            <p class="price">29.990.000₫</p>
+            <button>Mua ngay</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="badge-hot">HOT</span>
+          <div class="card-img">💻</div>
+          <div class="card-body">
+            <h4>MacBook Air M3</h4>
+            <p class="price">32.990.000₫</p>
+            <button>Mua ngay</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img">🎧</div>
+          <div class="card-body">
+            <h4>Sony WH-1000XM5</h4>
+            <p class="price">7.490.000₫</p>
+            <button>Mua ngay</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img">⌨️</div>
+          <div class="card-body">
+            <h4>Keychron K2</h4>
+            <p class="price">2.190.000₫</p>
+            <button>Mua ngay</button>
+          </div>
+        </div>
+
+      </div>
+
+    
+      <div class="filler">
+        <p>Heloo</p>
+        <p>Doremon</p>
+        <p>Abc</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- 4. Scroll to top button (position: fixed) -->
+  <button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+</body>
+</html>
