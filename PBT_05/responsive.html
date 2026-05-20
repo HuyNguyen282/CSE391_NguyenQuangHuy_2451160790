@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PBT05 — Responsive Product Page</title>
+  <link rel="stylesheet" href="responsive.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">ShopVN</div>
+
+    <button class="hamburger" id="hamburgerBtn">☰</button>
+
+    <nav class="nav" id="navMenu">
+      <a href="#">Trang chủ</a>
+      <a href="#">Sản phẩm</a>
+      <a href="#">Khuyến mãi</a>
+      <a href="#">Liên hệ</a>
+    </nav>
+  </header>
+
+  <div class="layout">
+
+    <!-- SIDEBAR: ẩn trên mobile -->
+    <aside class="sidebar">
+      <h3>Bộ lọc</h3>
+
+      <div class="filter-group">
+        <h4>Danh mục</h4>
+        <label><input type="checkbox" checked> Điện thoại</label>
+        <label><input type="checkbox"> Laptop</label>
+        <label><input type="checkbox"> Tablet</label>
+        <label><input type="checkbox"> Phụ kiện</label>
+      </div>
+
+      <div class="filter-group">
+        <h4>Giá tiền</h4>
+        <label><input type="radio" name="price" checked> Tất cả</label>
+        <label><input type="radio" name="price"> Dưới 5 triệu</label>
+        <label><input type="radio" name="price"> 5–15 triệu</label>
+        <label><input type="radio" name="price"> Trên 15 triệu</label>
+      </div>
+
+      <button class="btn-filter">Áp dụng</button>
+    </aside>
+
+    <!-- PRODUCT GRID -->
+    <main class="product-area">
+      <h2>Sản phẩm nổi bật</h2>
+
+      <div class="product-grid">
+
+        <article class="card">
+          <img src="https://cdn2.fptshop.com.vn/unsafe/828x0/filters:format(webp):quality(75)/2023_9_13_638301983422003341_VN_iPhone_15_Pro_Natural_Titanium_PDP_Image_Position-1A_Natural_Titanium_Color.jpg" alt="iPhone 15">
+          <div class="card-body">
+            <h3>iPhone 15 Pro</h3>
+            <p>A17 Pro, Camera 48MP</p>
+            <span class="price">32.990.000₫</span>
+            <button>Mua ngay</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://cdn2.fptshop.com.vn/unsafe/512x0/filters:format(webp):quality(75)/2024_1_27_638419500119790990_samsung-galaxy-s24-ultra-xam-4.png" alt="Galaxy S24">
+          <div class="card-body">
+            <h3>Galaxy S24 Ultra</h3>
+            <p>Snapdragon 8 Gen 3, S Pen</p>
+            <span class="price">29.990.000₫</span>
+            <button>Mua ngay</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbfFJuwbZJgbiU9NQlmUVQGFuWsjb32Szb6w&s" alt="MacBook Pro">
+          <div class="card-body">
+            <h3>MacBook Pro M3</h3>
+            <p>Apple M3, 18GB RAM</p>
+            <span class="price">52.990.000₫</span>
+            <button>Mua ngay</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://cdn.tgdd.vn/Products/Images/522/325534/ipad-pro-13-inch-m4-lte-black-thumb-600x600.jpg" alt="iPad Pro">
+          <div class="card-body">
+            <h3>iPad Pro M4</h3>
+            <p>Chip M4, OLED, 5G</p>
+            <span class="price">39.990.000₫</span>
+            <button>Mua ngay</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/x/i/xiaomi-14-ultra_3.png" alt="Xiaomi 14">
+          <div class="card-body">
+            <h3>Xiaomi 14 Ultra</h3>
+            <p>Leica Camera, SD 8 Gen 3</p>
+            <span class="price">22.990.000₫</span>
+            <button>Mua ngay</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://cdn.tgdd.vn/Products/Images/54/315014/tai-nghe-bluetooth-airpods-pro-2nd-gen-usb-c-charge-apple-1-750x500.jpg" alt="AirPods Pro">
+          <div class="card-body">
+            <h3>AirPods Pro Gen 2</h3>
+            <p>ANC, USB-C</p>
+            <span class="price">5.990.000₫</span>
+            <button>Mua ngay</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/dell_xps_13_9340_1_0bb806700c.png" alt="Dell XPS">
+          <div class="card-body">
+            <h3>Dell XPS 15</h3>
+            <p>Intel Core i9, RTX 4070</p>
+            <span class="price">48.990.000₫</span>
+            <button>Mua ngay</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/g/r/group_604_5.png" alt="Apple Watch">
+          <div class="card-body">
+            <h3>Apple Watch Ultra 2</h3>
+            <p>Titanium, GPS+Cellular</p>
+            <span class="price">21.990.000₫</span>
+            <button>Mua ngay</button>
+          </div>
+        </article>
+
+      </div>
+    </main>
+
+    <!-- ADS BAR: chỉ hiện trên desktop -->
+    <aside class="ads-bar">
+      <div class="ads-widget">
+        <h4>🔥 Flash Sale</h4>
+        <p>Kết thúc sau: 02:45:12</p>
+      </div>
+      <div class="ads-widget">
+        <h4>📦 Miễn phí ship</h4>
+        <p>Đơn từ 500k</p>
+      </div>
+      <div class="ads-widget">
+        <h4>💳 Trả góp 0%</h4>
+        <p>12 tháng không lãi</p>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h4>ShopVN</h4>
+        <p>Mua sắm thông minh</p>
+      </div>
+      <div>
+        <h4>Danh mục</h4>
+        <a href="#">Điện thoại</a>
+        <a href="#">Laptop</a>
+        <a href="#">Tablet</a>
+      </div>
+      <div>
+        <h4>Hỗ trợ</h4>
+        <a href="#">Đổi trả</a>
+        <a href="#">Bảo hành</a>
+        <a href="#">Liên hệ</a>
+      </div>
+      <div>
+        <h4>Mạng xã hội</h4>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2025 ShopVN — PBT05</p>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('hamburgerBtn');
+    const nav = document.getElementById('navMenu');
+    btn.addEventListener('click', () => nav.classList.toggle('nav-open'));
+  </script>
+
+</body>
+</html>
