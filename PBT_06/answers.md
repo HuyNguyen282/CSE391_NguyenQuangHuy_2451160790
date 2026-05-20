@@ -46,3 +46,67 @@
 | `.container-md` | 100% width trên mobile (< 768px), chuyển sang fixed max-width từ breakpoint `md` trở lên |
  
 ---
+
+## PHẦN C — PHÂN TÍCH
+ 
+### Câu C1 — Tùy biến Bootstrap
+ 
+**1. Quy trình đổi màu `$primary` từ xanh mặc định sang `#E63946`:**
+ 
+Cần công cụ: **Node.js**, **npm**, **Sass compiler**.
+ 
+**Các bước thực hiện:**
+ 
+```bash
+# Bước 1: Cài Bootstrap source và Sass
+npm install bootstrap sass
+```
+ 
+Tạo file `custom.scss`:
+ 
+```scss
+// Bước 2: Override biến TRƯỚC khi import Bootstrap
+$primary: #E63946;
+ 
+// Bước 3: Import toàn bộ Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap";
+```
+ 
+```bash
+# Bước 4: Compile ra file CSS
+npx sass custom.scss custom.css
+```
+ 
+Sau đó dùng `custom.css` thay vì link CDN Bootstrap mặc định.
+ 
+**2. Tại sao KHÔNG nên override trực tiếp `.btn-primary { background: red; }`?**
+ 
+Vì một biến `$primary` trong Bootstrap sinh ra **hàng chục class liên quan** cùng lúc: `.btn-primary`, `.bg-primary`, `.text-primary`, `.border-primary`, `.alert-primary`, `.badge.bg-primary`, v.v.
+ 
+Nếu override trực tiếp `.btn-primary`, chỉ duy nhất class đó đổi màu, còn `.bg-primary`, `.alert-primary`... vẫn giữ màu xanh gốc → **không nhất quán** trong toàn bộ giao diện.
+ 
+Dùng SASS variable thì Bootstrap sẽ tự động sinh lại toàn bộ hệ thống màu đồng bộ từ 1 chỗ duy nhất.
+ 
+---
+ 
+### Câu C2 — So sánh Bootstrap vs CSS thuần
+ 
+Lấy ví dụ: viết 1 navbar responsive + 1 product card.
+ 
+| Tiêu chí | CSS thuần | Bootstrap |
+|---|---|---|
+| **Số dòng CSS cần viết** | ~80–120 dòng | 0 dòng (chỉ thêm class vào HTML) |
+| **Thời gian phát triển** | 2–3 giờ | 15–30 phút |
+| **Responsive** | Tự viết media queries | Grid và breakpoints có sẵn |
+| **Khả năng tùy biến** | Toàn quyền, không giới hạn | Bị ràng buộc bởi design system Bootstrap |
+| **File size** | Nhỏ (chỉ CSS cần thiết) | To hơn (~30KB gzip full Bootstrap) |
+| **Nhất quán giao diện** | Phụ thuộc người viết | Đảm bảo nhất quán theo hệ thống |
+ 
+**Khi NÊN dùng Bootstrap:**
+- Cần ra sản phẩm nhanh (prototype, MVP, admin panel).
+- Team nhiều người, cần design system thống nhất.
+- Dự án không cần giao diện quá độc đáo (trang nội bộ, dashboard).
+**Khi KHÔNG NÊN dùng Bootstrap:**
+- Cần thiết kế hoàn toàn tùy chỉnh, khác biệt so với các trang Bootstrap thông thường.
+- Yêu cầu tối ưu performance nghiêm ngặt (file CSS Bootstrap nặng hơn so với chỉ viết đúng thứ cần).
+- Dự án đã dùng framework CSS khác (Tailwind, Bulma) — dùng 2 framework dễ conflict.
