@@ -252,5 +252,249 @@ sass --watch scss/style.scss:css/style.css --style=expanded
 sass scss/style.scss css/style.css --style=compressed
 ```
  
-
+Lệnh compile đã dùng cho Bài B3: `sass --watch scss/style.scss:css/style.css`.
 ---
+## PHẦN C 
+### Câu C1 (10đ) — Phân tích trang web thực: **Youtube (youtube.com)**
+
+#### 3 kích thước màn hình — phân tích
+
+**Mobile (375px):**
+
+- **Navigation:** Header thu gọn chỉ còn Logo + icon Tìm kiếm. Thanh điều hướng chính chuyển thành bottom tab bar cố định dưới cùng (Trang chủ / Shorts / Kênh đăng ký / Bạn). Thanh lọc chủ đề (chips filter) bị thu hẹp, người dùng phải vuốt ngang để xem tiếp.
+- **Lưới video:** 1 cột — ảnh thumbnail chiếm trọn 100% chiều rộng màn hình (trừ lề), giúp người dùng dễ xem nhất trên màn hình dọc.
+- **Bị ẩn trên mobile:** Menu bên trái (sidebar) hoàn toàn không có. Một số lượng lớn các thẻ chủ đề (chips) bị khuất. Các nút thao tác phụ trên video (icon 3 chấm) nhỏ hơn hoặc ẩn đi cho tới khi tương tác.
+- **Font size:** Kích thước chữ vẫn dễ đọc (khoảng 12–14px) nhưng tiêu đề video dài sẽ bị cắt ngắn bằng dấu ba chấm ... sớm hơn (tối đa 2 dòng) để tiết kiệm diện tích.
+
+**Tablet (768px):**
+
+- **Navigation:** Tương tự mobile, header có Logo + icon Tìm kiếm, và (dựa theo ảnh cung cấp) vẫn sử dụng bottom tab bar dưới cùng. Thanh lọc chủ đề ở trên trải dài hơn, hiển thị được nhiều từ khóa hơn mà không cần vuốt.
+- **Lưới video:** 2 cột — không gian mở rộng giúp chia đôi màn hình, hiển thị 2 video song song.
+- **Bottom tab bar:** Sidebar bên trái vẫn chưa xuất hiện (dựa trên ảnh hiện tại).
+- **Font size:** Chữ giữ nguyên kích thước chuẩn nhưng tiêu đề có nhiều không gian hiển thị chiều ngang hơn, ít bị cắt chữ hơn so với mobile.
+
+**Desktop (1440px):**
+
+- **Navigation:** Header rộng rãi, thanh lọc chủ đề hiển thị được tối đa các tùy chọn (Tất cả, Trò chơi, Trực tiếp,...).
+- **Lưới video:** 4 cột — dàn trải đều nội dung lấp đầy không gian màn hình lớn.
+- **Bị ẩn trên desktop:** Hầu như không có. Tất cả các thông tin từ thumbnail, độ dài video, avatar kênh, tên kênh, lượt xem, thời gian đăng đều được hiển thị đầy đủ và thoáng mắt.
+- **Font size:** Tiêu chuẩn (khoảng 14–16px). Khoảng cách (padding/margin) giữa các khối video rộng rãi, tạo cảm giác không bị chật chội.
+
+### Câu C2 (10đ) — Thiết kế Responsive Strategy: Trang Đặt Bàn Nhà Hàng
+
+#### Wireframe 3 kích thước
+
+```
+MOBILE (< 768px)
+┌─────────────────────────┐
+│ NHÀ HÀNG    SĐT         │  ← Header: logo + số điện thoại (to, dễ bấm)
+├─────────────────────────┤
+│                         │
+│     HERO IMAGE          │  ← full width, height: 250px
+│   (toàn chiều rộng)     │
+│                         │
+├─────────────────────────┤
+│  [ảnh 1]                │  ← Grid ảnh món ăn: 1 cột (6 ảnh chồng)
+│  [ảnh 2]                │    Đơn giản, tải nhanh trên mobile
+│  [ảnh 3]                │
+│  [ảnh 4]                │
+│  [ảnh 5]                │
+│  [ảnh 6]                │
+├─────────────────────────┤
+│  FORM ĐẶT BÀN           │  ← Form  dọc 1 cột
+│  Ngày: [_______]        │    Input full width
+│  Giờ:  [_______]        │
+│  Số người: [___]        │
+│  Ghi chú: [_____]       │
+│  [  ĐẶT BÀN NGAY  ]     │
+├─────────────────────────┤
+│  BẢN ĐỒ GOOGLE MAPS     │  ← height: 250px, full width
+│  (nhúng iframe)         │
+├─────────────────────────┤
+│  FOOTER                 │
+└─────────────────────────┘
+
+Ẩn trên mobile: nav links (chỉ giữ logo + SĐT)
+
+
+TABLET (768px – 1023px)
+┌──────────────────────────────────────────┐
+│  🍽️ NHÀ HÀNG  [Giới thiệu][Menu][Đặt bàn]│
+├──────────────────────────────────────────┤
+│                                          │
+│            HERO IMAGE                   │  
+│                                          │
+├──────────────────────────────────────────┤
+│  [ảnh 1]  [ảnh 2]  [ảnh 3]              │  ← Grid 3 cột (6 ảnh = 2 hàng)
+│  [ảnh 4]  [ảnh 5]  [ảnh 6]              │
+├──────────────────────────────────────────┤
+│  Ngày: [___]  Giờ: [___]                │  ← Form 2 cột
+│  Số người: [___]  Ghi chú: [________]   │
+│         [  ĐẶT BÀN NGAY  ]              │
+├──────────────────────────────────────────┤
+│           BẢN ĐỒ GOOGLE MAPS            │  ← full width, height: 350px
+├──────────────────────────────────────────┤
+│           FOOTER (2 cột)                 │
+└──────────────────────────────────────────┘
+
+
+DESKTOP (≥ 1024px)
+┌─────────────────────────────────────────────────────────┐
+│  🍽️ NHÀ HÀNG ABC   [Giới thiệu][Menu][Đặt bàn][Blog]   │
+├─────────────────────────────────────────────────────────┤
+│                                                         │
+│                    HERO IMAGE                           │  ← height: 550px
+│                                                         │
+├────────────────────────────────────┬────────────────────┤
+│  GRID ẢNH MÓN ĂN (3 cột)          │  FORM ĐẶT BÀN      │
+│  [ảnh 1]  [ảnh 2]  [ảnh 3]        │  Ngày:  [_______]  │
+│  [ảnh 4]  [ảnh 5]  [ảnh 6]        │  Giờ:   [_______]  │
+│                                    │  Số ng: [_______]  │
+│                                    │  Ghi chú:          │
+│                                    │  [_____________]   │
+│                                    │  [  ĐẶT NGAY  ]    │
+├────────────────────────────────────┴────────────────────┤
+│                  BẢN ĐỒ GOOGLE MAPS (full width)        │
+├─────────────────────────────────────────────────────────┤
+│             FOOTER (4 cột)                               │
+└─────────────────────────────────────────────────────────┘
+
+Desktop: Layout 2 cột (ảnh + form cạnh nhau). Không có sidebar.
+```
+
+#### CSS Skeleton — Mobile-First, Grid + Media Queries
+
+```css
+
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* --- HEADER --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+}
+
+.header__nav {
+    display: none;  
+}
+
+
+.hero {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+
+.food-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 16px;
+}
+
+
+.booking-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 16px;
+}
+
+.booking-form input,
+.booking-form textarea,
+.booking-form select {
+    width: 100%;
+    padding: 12px;
+}
+
+/* --- BẢN ĐỒ --- */
+.map-section {
+    width: 100%;
+    height: 250px;
+}
+
+.map-section iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* --- FOOTER: mobile 1 cột --- */
+.footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 16px;
+}
+
+/* ============================================
+   TABLET — min-width: 768px
+   ============================================ */
+@media (min-width: 768px) {
+
+    .header__nav {
+        display: flex;   /* Hiện nav links */
+        gap: 24px;
+    }
+
+    .hero {
+        height: 400px;
+    }
+
+    /* Ảnh món: 3 cột */
+    .food-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Form: 2 cột */
+    .booking-form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .map-section { height: 350px; }
+
+    .footer__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
+   DESKTOP — min-width: 1024px
+   ============================================ */
+@media (min-width: 1024px) {
+
+    .hero {
+        height: 550px;
+    }
+
+    /* Layout chính: 2 cột (ảnh món | form) */
+    .main-content {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 24px;
+    }
+
+    /* Ảnh giữ 3 cột trong cột trái */
+    .food-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Form full height bên phải */
+    .booking-form {
+        grid-template-columns: 1fr;  /* 1 cột dọc bên phải */
+    }
+
+    .map-section { height: 420px; }
+
+    .footer__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+```

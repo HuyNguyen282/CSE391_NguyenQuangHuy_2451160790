@@ -1,0 +1,32 @@
+// _mixins.scss — PBT05 Bài B3
+
+@use 'variables' as *;
+
+// ★ MIXIN 1: Responsive — Mobile-First, dùng min-width
+// Cách dùng: @include respond-to($breakpoint-tablet) { ... }
+@mixin respond-to($breakpoint) {
+  @media (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// ★ MIXIN 2: Flex center
+// Cách dùng: @include flex-center;
+@mixin flex-center($direction: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+// ★ MIXIN 3: Card shadow + hover
+// Cách dùng: @include card-shadow;
+@mixin card-shadow {
+  box-shadow: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+}

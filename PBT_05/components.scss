@@ -1,0 +1,356 @@
+// _components.scss — PBT05 Bài B3
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================================
+// HEADER
+// ============================================================
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-sm $spacing-md;
+  background: $white;
+  border-bottom: 1px solid $border-color;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .hamburger {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  // Tablet+: ẩn hamburger, hiện nav ngang
+  @include respond-to($breakpoint-tablet) {
+    .hamburger {
+      display: none;
+    }
+  }
+}
+
+// ============================================================
+// NAV
+// ============================================================
+
+.nav {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: $white;
+  border-bottom: 1px solid $border-color;
+  padding: $spacing-sm 0;
+
+  &.nav-open {
+    display: flex;
+  }
+
+  a {
+    padding: 10px $spacing-md;
+    border-bottom: 1px solid #eee;
+    color: $text-color;
+    text-decoration: none;
+
+    &:hover {
+      background: $bg-color;
+    }
+  }
+
+  // Tablet+: nav ngang
+  @include respond-to($breakpoint-tablet) {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    border: none;
+    padding: 0;
+    gap: 4px;
+
+    a {
+      border: none;
+      padding: 6px 12px;
+      border-radius: $radius-sm;
+    }
+  }
+}
+
+// ============================================================
+// LAYOUT
+// ============================================================
+
+.layout {
+  display: block;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: $spacing-md;
+
+  // Desktop: 3 cột
+  @include respond-to($breakpoint-desktop) {
+    display: grid;
+    grid-template-columns: 200px 1fr 160px;
+    gap: 20px;
+    align-items: start;
+    padding: 20px 24px;
+  }
+}
+
+// ============================================================
+// SIDEBAR
+// ============================================================
+
+.sidebar {
+  display: none;   // ẩn trên mobile
+  background: $white;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  padding: $spacing-md;
+
+  h3 {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-sm;
+    border-bottom: 2px solid $primary-color;
+  }
+
+  // Tablet: hiện dạng ngang
+  @include respond-to($breakpoint-tablet) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+    align-items: flex-start;
+
+    h3 {
+      width: 100%;
+    }
+  }
+
+  // Desktop: dọc cố định
+  @include respond-to($breakpoint-desktop) {
+    display: block;
+    position: sticky;
+    top: 60px;
+    margin-bottom: 0;
+  }
+}
+
+.filter-group {
+  margin-bottom: $spacing-md;
+
+  h4 {
+    font-size: $font-size-sm;
+    color: $text-light;
+    text-transform: uppercase;
+    margin-bottom: $spacing-sm;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 0;
+    cursor: pointer;
+    font-size: $font-size-sm;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}
+
+.btn-filter {
+  padding: $spacing-sm $spacing-md;
+  background: $primary-color;
+  color: $white;
+  border: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  font-size: $font-size-sm;
+
+  &:hover {
+    background: $secondary-color;
+  }
+}
+
+// ============================================================
+// PRODUCT GRID
+// ============================================================
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr;          // Mobile: 1 cột
+  gap: $spacing-md;
+
+  @include respond-to($breakpoint-tablet) {
+    grid-template-columns: repeat(2, 1fr);   // Tablet: 2 cột
+  }
+
+  @include respond-to($breakpoint-desktop) {
+    grid-template-columns: repeat(4, 1fr);   // Desktop: 4 cột
+  }
+}
+
+// ============================================================
+// CARD — nesting + &:hover + &.featured
+// ============================================================
+
+.card {
+  background: $white;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  overflow: hidden;
+
+  // ★ dùng mixin card-shadow
+  @include card-shadow;
+
+  img {
+    width: 100%;
+    // Zoom ảnh khi hover card
+    transition: transform 0.4s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+
+  .card-body {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    h3 {
+      font-size: $font-size-base;
+    }
+
+    p {
+      font-size: $font-size-sm;
+      color: $text-light;
+    }
+
+    .price {
+      font-size: $font-size-lg;
+      font-weight: bold;
+      color: $danger-color;
+    }
+
+    button {
+      padding: $spacing-sm;
+      background: $primary-color;
+      color: $white;
+      border: none;
+      border-radius: $radius-sm;
+      cursor: pointer;
+      font-size: $font-size-sm;
+      transition: background 0.2s;
+
+      &:hover {
+        background: $secondary-color;
+      }
+    }
+  }
+
+  // Modifier: card nổi bật
+  &.featured {
+    border: 2px solid $primary-color;
+  }
+}
+
+// ============================================================
+// ADS BAR
+// ============================================================
+
+.ads-bar {
+  display: none;
+
+  @include respond-to($breakpoint-desktop) {
+    display: block;
+    position: sticky;
+    top: 60px;
+  }
+}
+
+.ads-widget {
+  background: $white;
+  border: 1px solid $border-color;
+  border-radius: $radius-md;
+  padding: 12px;
+  margin-bottom: 12px;
+
+  h4 {
+    font-size: $font-size-base;
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: $font-size-sm;
+    color: $text-light;
+  }
+}
+
+// ============================================================
+// FOOTER
+// ============================================================
+
+.footer {
+  background: #222;
+  color: #ccc;
+  padding: $spacing-lg $spacing-md $spacing-sm;
+  margin-top: $spacing-lg;
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto $spacing-md;
+
+    @include respond-to($breakpoint-tablet) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to($breakpoint-desktop) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    h4 {
+      color: $white;
+      font-size: $font-size-base;
+      margin-bottom: $spacing-sm;
+    }
+
+    a, p {
+      display: block;
+      font-size: $font-size-sm;
+      color: #aaa;
+      margin-bottom: 4px;
+      text-decoration: none;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+    padding-top: $spacing-sm;
+    border-top: 1px solid #444;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}

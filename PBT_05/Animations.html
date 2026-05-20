@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="animations.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+  <!-- HIỆU ỨNG 1: CARD HOVER -->
+  <section class="section">
+    <h2>Card Hover Effect</h2>
+    <p class="desc">Hover vào card: <code>translateY(-8px)</code> + box-shadow tăng |
+      <code>transition: all 0.3s ease</code></p>
+
+    <div class="card-grid">
+      <article class="card">
+        <img
+          src="https://cdn2.fptshop.com.vn/unsafe/828x0/filters:format(webp):quality(75)/2023_9_13_638301983422003341_VN_iPhone_15_Pro_Natural_Titanium_PDP_Image_Position-1A_Natural_Titanium_Color.jpg"
+          alt="iPhone 15">
+        <div class="card-body">
+          <h3>iPhone 15 Pro</h3>
+          <p>32.990.000₫</p>
+          <button class="btn-buy">Mua ngay</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <img
+          src="https://cdn2.fptshop.com.vn/unsafe/512x0/filters:format(webp):quality(75)/2024_1_27_638419500119790990_samsung-galaxy-s24-ultra-xam-4.png"
+          alt="Galaxy S24">
+        <div class="card-body">
+          <h3>Galaxy S24 Ultra</h3>
+          <p>29.990.000₫</p>
+          <button class="btn-buy">Mua ngay</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbfFJuwbZJgbiU9NQlmUVQGFuWsjb32Szb6w&s"
+          alt="MacBook">
+        <div class="card-body">
+          <h3>MacBook Pro M3</h3>
+          <p>52.990.000₫</p>
+          <button class="btn-buy">Mua ngay</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- HIỆU ỨNG 2: BUTTON HOVER -->
+  <section class="section">
+    <h2> Button Hover Effects</h2>
+    <p class="desc">Đổi <code>background-color</code> + <code>color</code> mượt | <code>transform: scale(1.05)</code>
+    </p>
+
+    <div class="btn-row">
+      <button class="btn btn-primary">Mua ngay</button>
+      <button class="btn btn-outline">Thêm vào giỏ</button>
+      <button class="btn btn-ghost">Xem chi tiết</button>
+    </div>
+  </section>
+
+  <!-- HIỆU ỨNG 3: IMAGE ZOOM -->
+  <section class="section">
+    <h2> Image Zoom on Hover</h2>
+    <p class="desc"><code>overflow: hidden</code> trên container | ảnh <code>transform: scale(1.1)</code> khi hover</p>
+
+    <div class="zoom-grid">
+      <div class="zoom-wrap">
+        <img
+          src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/44/359480/lenovo-thinkbook-14-g8-core-7-240h-21sg007tvn-thumb-638997470101770570-600x600.jpg"
+          alt="Laptop">
+        <p>Laptop Gaming</p>
+      </div>
+      <div class="zoom-wrap">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVNatQ80ICDP22bLLEe10xs0LdT2o0mpQb_A&s"
+          alt="Watch">
+        <p>Smart Watch</p>
+      </div>
+      <div class="zoom-wrap">
+        <img src="https://m.media-amazon.com/images/I/610ub5kytVL._AC_UF894,1000_QL80_.jpg" alt="Headphones">
+        <p>Headphones</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIỆU ỨNG 4: LOADING SPINNER -->
+  <section class="section">
+    <h2> Loading Spinner</h2>
+    <p class="desc"><code>@keyframes spin</code> | <code>animation: spin 1s linear infinite</code></p>
+
+    <div class="spinner-demo">
+      <div class="spinner"></div>
+    </div>
+  </section>
+
+  <!-- HIỆU ỨNG 5: FADE-IN -->
+  <section class="section">
+    <h2> Fade-in Animation (CSS only)</h2>
+    <p class="desc"><code>@keyframes fadeIn</code> | <code>opacity: 0; translateY(20px)</code> →
+      <code>opacity: 1; translateY(0)</code></p>
+
+    <div class="fade-grid">
+      <div class="fade-card" style="animation-delay: 0s">
+        <span>📱</span>
+        <h4>Điện thoại</h4>
+      </div>
+      <div class="fade-card" style="animation-delay: 0.15s">
+        <span>💻</span>
+        <h4>Laptop</h4>
+      </div>
+      <div class="fade-card" style="animation-delay: 0.3s">
+        <span>🎧</span>
+        <h4>Phụ kiện</h4>
+      </div>
+      <div class="fade-card" style="animation-delay: 0.45s">
+        <span>⌚</span>
+        <h4>Đồng hồ</h4>
+      </div>
+    </div>
+  </section>
+
+
+</body>
+
+</html>
