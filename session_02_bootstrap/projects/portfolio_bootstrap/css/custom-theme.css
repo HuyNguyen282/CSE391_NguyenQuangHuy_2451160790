@@ -1,0 +1,68 @@
+/* Override Bootstrap primary color → teal */
+:root {
+    --bs-primary: #0d9488;
+    --bs-primary-rgb: 13, 148, 136;
+    --bs-link-color: #0d9488;
+    --bs-btn-bg: #0d9488;
+    --custom-spacing-xs: 4px;
+    --custom-spacing-sm: 8px;
+    --custom-spacing-md: 16px;
+    --custom-spacing-lg: 32px;
+}
+
+.btn-primary {
+    background-color: #0d9488;
+    border-color: #0d9488;
+}
+.btn-primary:hover {
+    background-color: #0f766e;
+    border-color: #0f766e;
+}
+.text-primary { color: #0d9488 !important; }
+.border-primary { border-color: #0d9488 !important; }
+
+/* Custom border-radius (flatter than Bootstrap default) */
+.card { border-radius: 4px; }
+.btn  { border-radius: 2px; }
+.badge { border-radius: 2px; }
+
+/* Typography */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background: #ffffff;
+    color: #111;
+}
+
+/* Original nav styles kept for reference */
+.nav-custom {
+    background: #fff;
+    border-bottom: 1px solid #e5e7ee;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 44px;
+}
+
+/* Stats grid (used outside Bootstrap context) */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.stat-card {
+    background: #fff;
+    border-radius: 4px;
+    padding: 6px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+}
+.stat-label { font-size: x-large; font-weight: bold; }
+.stat-value  { font-size: 24px; font-weight: 600; }
+
+.toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
