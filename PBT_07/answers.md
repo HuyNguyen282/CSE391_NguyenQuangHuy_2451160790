@@ -124,3 +124,81 @@ const html = `<div class="card">
     <span>Giá: ${price}đ</span>
 </div>`;
 ```
+
+## PHẦN C — SUY LUẬN
+
+---
+## PHẦN C — SUY LUẬN
+ 
+---
+ 
+#### Câu C1
+ 
+**Lỗi 1:** `if (giaSauGiam = 0)` dùng `=` thay vì `===`, đây là phép gán chứ không phải so sánh. Kết quả là `giaSauGiam` bị gán thành `0` và hàm trả về `0` thay vì giá trị đúng.
+```javascript
+// Sửa:
+if (giaSauGiam === 0) {
+```
+ 
+**Lỗi 2:** `var giamGia` nên dùng `const` vì giá trị không thay đổi sau khi gán.
+```javascript
+// Sửa:
+const giamGia = giaBan * phanTramGiam / 100;
+```
+ 
+**Lỗi 3:** `tinhGiaGiamGia("100000", 20)` truyền string vào hàm, hàm không kiểm tra kiểu nên âm thầm chạy sai. Cần validate ở đầu hàm.
+```javascript
+// Sửa: thêm vào đầu hàm
+if (typeof giaBan !== 'number' || typeof phanTramGiam !== 'number') {
+    return "Lỗi: Input không phải số";
+}
+```
+ 
+**Lỗi 4:** Thiếu dấu `;` ở cuối nhiều dòng. JS có tự thêm nhưng không tin cậy 100%, dễ gây bug ẩn.
+```javascript
+// Sửa: thêm ; vào cuối mỗi câu lệnh
+return "Phần trăm giảm không hợp lệ";
+const giamGia = giaBan * phanTramGiam / 100;
+```
+ 
+**Lỗi 5 (lỗi ẩn):** `for (var i = ...)` dùng với `setTimeout` sẽ in ra `"Item 5"` năm lần thay vì `0, 1, 2, 3, 4`. `var` có function scope nên tất cả callback dùng chung 1 biến `i`. Khi setTimeout chạy sau 1 giây, vòng lặp đã kết thúc và `i = 5` rồi.
+```javascript
+// Sửa: dùng let → mỗi lần lặp có biến i riêng
+for (let i = 0; i < 5; i++) {
+    setTimeout(function() { console.log("Item " + i); }, 1000);
+    // → 0, 1, 2, 3, 4
+}
+```
+ 
+**Code đã sửa hoàn chỉnh:**
+ 
+```javascript
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+    if (typeof giaBan !== 'number' || typeof phanTramGiam !== 'number') {
+        return "Lỗi: Input không phải số";
+    }
+ 
+    if (phanTramGiam < 0 || phanTramGiam > 100) {
+        return "Phần trăm giảm không hợp lệ";
+    }
+ 
+    const giamGia = giaBan * phanTramGiam / 100;
+    const giaSauGiam = giaBan - giamGia;
+ 
+    if (giaSauGiam === 0) {
+        console.log("Sản phẩm miễn phí!");
+    }
+ 
+    return giaSauGiam;
+}
+ 
+const gia = tinhGiaGiamGia(100000, 20);
+console.log("Giá sau giảm: " + gia + "đ");
+ 
+const gia2 = tinhGiaGiamGia(50000, 110);
+console.log("Giá: " + gia2);
+ 
+for (let i = 0; i < 5; i++) {
+    setTimeout(function() { console.log("Item " + i); }, 1000);
+}
+```
