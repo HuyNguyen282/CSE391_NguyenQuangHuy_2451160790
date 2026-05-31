@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Đăng Ký</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-card">
+            <h1>Đăng ký tài khoản</h1>
+
+            <div class="field">
+                <label for="nameInput">Họ và tên</label>
+                <input type="text" id="nameInput" placeholder="Nhập họ tên...">
+                <span class="hint"></span>
+            </div>
+
+            <div class="field">
+                <label for="emailInput">Email</label>
+                <input type="text" id="emailInput" placeholder="example@email.com">
+                <span class="hint"></span>
+            </div>
+
+            <div class="field">
+                <label for="passwordInput">Mật khẩu</label>
+                <input type="password" id="passwordInput" placeholder="Nhập mật khẩu...">
+                <div class="strength-bar">
+                    <div class="strength-fill" id="strengthFill"></div>
+                </div>
+                <span class="strength-label" id="strengthLabel"></span>
+            </div>
+
+            <div class="field">
+                <label for="confirmInput">Xác nhận mật khẩu</label>
+                <input type="password" id="confirmInput" placeholder="Nhập lại mật khẩu...">
+                <span class="hint"></span>
+            </div>
+
+            <div class="field">
+                <label for="phoneInput">Số điện thoại</label>
+                <input type="text" id="phoneInput" placeholder="0901-234-567" maxlength="12">
+                <span class="hint"></span>
+            </div>
+
+            <button id="submitBtn" disabled>Đăng ký</button>
+        </div>
+    </div>
+
+    <!-- Modal thành công -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-icon">✅</div>
+            <h2>Đăng ký thành công!</h2>
+            <div class="modal-info" id="modalInfo"></div>
+            <button id="modalClose">Đóng</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <header class="app-header">
+            <h1>🖼️ Gallery</h1>
+            <div class="hint-bar">
+                <kbd>←</kbd> <kbd>→</kbd> Chuyển ảnh &nbsp;|&nbsp;
+                <kbd>1-9</kbd> Nhảy đến &nbsp;|&nbsp;
+                <kbd>Space</kbd> Slideshow &nbsp;|&nbsp;
+                <kbd>Ctrl+K</kbd> Command Palette
+            </div>
+        </header>
+
+        <div class="gallery-area">
+            <button class="nav-btn prev" id="prevBtn" aria-label="Ảnh trước">‹</button>
+
+            <div class="gallery-main" id="galleryMain">
+                <img id="mainImg" src="" alt="" tabindex="0">
+                <div class="slide-info">
+                    <span id="slideCounter">1 / 9</span>
+                    <span id="slideTitle"></span>
+                </div>
+                <div class="play-badge" id="playBadge">▶ Playing</div>
+            </div>
+
+            <button class="nav-btn next" id="nextBtn" aria-label="Ảnh kế tiếp">›</button>
+        </div>
+
+        <div class="thumb-strip" id="thumbStrip"></div>
+    </div>
+
+    <!-- Command palette -->
+    <div class="palette-overlay" id="paletteOverlay">
+        <div class="palette" role="dialog" aria-label="Command palette">
+            <input type="text" id="paletteInput" placeholder="Tìm lệnh... (vd: next, play, go to 3)" aria-label="Tìm lệnh">
+            <ul class="palette-list" id="paletteList"></ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #0f0f1a;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app {
+    width: 100%;
+    max-width: 760px;
+    padding: 24px 16px;
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.app-header h1 {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.hint-bar {
+    font-size: 12px;
+    color: #888;
+}
+
+kbd {
+    background: #2a2a3e;
+    color: #aaa;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 11px;
+}
+
+/* Gallery */
+.gallery-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.gallery-main {
+    flex: 1;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #1a1a2e;
+    aspect-ratio: 16/9;
+}
+
+#mainImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.25s;
+    outline: none;
+}
+
+#mainImg:focus-visible {
+    outline: 3px solid #4f8ef7;
+    outline-offset: -3px;
+}
+
+.slide-info {
+    position: absolute;
+    bottom: 12px;
+    left: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#slideCounter {
+    background: rgba(0,0,0,0.6);
+    color: white;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+#slideTitle {
+    background: rgba(0,0,0,0.6);
+    color: #ddd;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.play-badge {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: rgba(79, 142, 247, 0.85);
+    color: white;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    display: none;
+}
+
+.play-badge.active {
+    display: block;
+}
+
+.nav-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    font-size: 32px;
+    width: 44px;
+    height: 64px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.nav-btn:hover, .nav-btn:focus-visible {
+    background: rgba(255,255,255,0.2);
+    outline: 2px solid #4f8ef7;
+}
+
+/* Thumbnails */
+.thumb-strip {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    justify-content: center;
+}
+
+.thumb-strip img {
+    width: 72px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s, outline 0.2s;
+    flex-shrink: 0;
+    outline: 2px solid transparent;
+}
+
+.thumb-strip img.active {
+    opacity: 1;
+    outline: 2px solid #4f8ef7;
+}
+
+.thumb-strip img:focus-visible {
+    outline: 2px solid #4f8ef7;
+    opacity: 1;
+}
+
+/* Command Palette */
+.palette-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 200;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 120px;
+}
+
+.palette-overlay.open {
+    display: flex;
+}
+
+.palette {
+    background: #1e1e30;
+    border: 1px solid #333;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+#paletteInput {
+    width: 100%;
+    padding: 16px 20px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #333;
+    color: #e0e0e0;
+    font-size: 16px;
+    outline: none;
+}
+
+#paletteInput::placeholder {
+    color: #555;
+}
+
+.palette-list {
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.palette-list li {
+    padding: 12px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #ccc;
+    transition: background 0.1s;
+}
+
+.palette-list li:hover,
+.palette-list li.selected {
+    background: #2a2a4e;
+    color: white;
+}
+
+.palette-list li .cmd-icon {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+}
+
+.palette-list li .cmd-shortcut {
+    margin-left: auto;
+    font-size: 12px;
+    color: #666;
+}
