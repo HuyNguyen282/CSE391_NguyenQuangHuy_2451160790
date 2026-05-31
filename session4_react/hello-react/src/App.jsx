@@ -20,7 +20,7 @@ function profile() {
         <table>
           <tr>
             <td>Họ tên:</td>
-            <td>Minh</td>
+            <td>Huy</td>
           </tr>
           <tr>
             <td>Email:</td>
@@ -31,22 +31,22 @@ function profile() {
   );
 }
 export default profile;
-function ProductInfo() {
-    return (
-        <div className="product">
-            <h2>iPhone 15</h2>
+// function ProductInfo() {
+//     return (
+//         <div className="product">
+//             <h2>iPhone 15</h2>
 
-            <p className="price">25.000.000đ</p>
+//             <p className="price">25.000.000đ</p>
 
-            <ul>
-                <li>Màn hình: 6.1 inch</li>
-                <li>Camera: 48MP</li>
-                <li>Pin: 3349 mAh</li>
-            </ul>
+//             <ul>
+//                 <li>Màn hình: 6.1 inch</li>
+//                 <li>Camera: 48MP</li>
+//                 <li>Pin: 3349 mAh</li>
+//             </ul>
 
-            <button>Mua ngay</button>
-        </div>
-    );
-}
+//             <button>Mua ngay</button>
+//         </div>
+//     );
+// }
 
-export default ProductInfo;
+// export default ProductInfo;
