@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đoán Số</title>
+  <script src="guess.js" defer></script>
+</head>
+<body>
+  <h1>🎯 Trò chơi đoán số</h1>
+  <p>Đoán số từ 1 đến 100. Bạn có tối đa <strong>7 lần</strong> đoán.</p>
+  <hr>
+
+  <p id="hint">Nhập số đầu tiên của bạn!</p>
+  <p>Số lần đoán còn lại: <strong id="remaining">7</strong></p>
+
+  <input type="number" id="guess-input" min="1" max="100" placeholder="Nhập số (1-100)" />
+  <button id="btn-guess">Đoán</button>
+  <button id="btn-restart">Chơi lại</button>
+
+  <hr>
+  <p>Đã đoán: <span id="history">—</span></p>
+</body>
+</html>
